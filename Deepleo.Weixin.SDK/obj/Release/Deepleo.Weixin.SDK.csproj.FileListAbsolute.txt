@@ -1,0 +1,105 @@
+C:\My Document\Temp\25 NewTon\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\Temp\25 NewTon\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\Temp\25 NewTon\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\My Document\Temp\25 NewTon\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\My Document\Temp\25 NewTon\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+C:\My Document\Temp\25 NewTon\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\Temp\25 NewTon\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+E:\Users\deepleo\Desktop\Source-weixin\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+E:\Users\deepleo\Desktop\Source-weixin\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\Temp\25 NewTon\Source-weixin\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+C:\My Document\Temp\25 NewTon\Source-weixin\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\Temp\25 NewTon\Source-weixin\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\Temp\25 NewTon\Source-weixin\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\Temp\25 NewTon\Source-weixin\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\My Document\Temp\25 NewTon\Source-weixin\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\My Document\Temp\25 NewTon\Source-weixin\Source\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\Temp\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\Temp\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\Temp\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\My Document\Temp\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\My Document\Temp\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\Temp\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+E:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+E:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+E:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+E:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+E:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+E:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+E:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\ResolveAssemblyReference.cache
+C:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\Users\deepleo\Desktop\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\Temp\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+D:\BaiduCloud\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+D:\BaiduCloud\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+D:\BaiduCloud\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+D:\BaiduCloud\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+D:\BaiduCloud\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\ResolveAssemblyReference.cache
+D:\BaiduCloud\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+D:\BaiduCloud\25 NewTon\Source-weixin\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\Documents and Settings\deepleo\桌面\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\Documents and Settings\deepleo\桌面\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\Documents and Settings\deepleo\桌面\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\Documents and Settings\deepleo\桌面\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\Documents and Settings\deepleo\桌面\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\deepleo\桌面\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\Documents and Settings\deepleo\桌面\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\Temp\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\Temp\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\Temp\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\My Document\Temp\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\My Document\Temp\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+C:\My Document\Temp\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\Temp\25 NewTon\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\source\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\source\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\source\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\My Document\source\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\My Document\source\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+C:\My Document\source\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\source\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\SourceCode\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\SourceCode\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\SourceCode\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\SourceCode\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\SourceCode\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+C:\SourceCode\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\SourceCode\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\Users\deepleo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\Users\deepleo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\Users\deepleo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\Users\deepleo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\Users\deepleo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\Users\deepleo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\SourceCode\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\SourceCode\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\SourceCode\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\SourceCode\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\SourceCode\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\SourceCode\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\source\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\source\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\source\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\My Document\source\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\My Document\source\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\My Document\source\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\My Document\source\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+C:\Users\yuan_xiaobo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\Users\yuan_xiaobo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\Users\yuan_xiaobo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\Users\yuan_xiaobo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\Users\yuan_xiaobo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\Users\yuan_xiaobo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb
+C:\Users\yuan_xiaobo\Desktop\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+C:\code\518\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.dll
+C:\code\518\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\Deepleo.Weixin.SDK.pdb
+C:\code\518\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.dll
+C:\code\518\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\bin\Release\System.Net.Http.xml
+C:\code\518\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.csprojResolveAssemblyReference.cache
+C:\code\518\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.dll
+C:\code\518\newton\newton\00 WeinxinSDK\Deepleo.Weixin.SDK\obj\Release\Deepleo.Weixin.SDK.pdb

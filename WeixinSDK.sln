@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deepleo.Web", "Deepleo.Web\Deepleo.Web.csproj", "{407E1BBC-5EAA-4621-971E-3EA9BCB20E30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deepleo.Weixin.SDK", "Deepleo.Weixin.SDK\Deepleo.Weixin.SDK.csproj", "{E7421A8D-6149-402A-82F8-F6D7728CEED1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{407E1BBC-5EAA-4621-971E-3EA9BCB20E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{407E1BBC-5EAA-4621-971E-3EA9BCB20E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{407E1BBC-5EAA-4621-971E-3EA9BCB20E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{407E1BBC-5EAA-4621-971E-3EA9BCB20E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7421A8D-6149-402A-82F8-F6D7728CEED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7421A8D-6149-402A-82F8-F6D7728CEED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7421A8D-6149-402A-82F8-F6D7728CEED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7421A8D-6149-402A-82F8-F6D7728CEED1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
