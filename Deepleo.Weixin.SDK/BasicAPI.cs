@@ -55,7 +55,7 @@ namespace Deepleo.Weixin.SDK
         /// <param name="appid"></param>
         /// <param name="secrect"></param>
         /// <returns>access_toke</returns>
-        public static dynamic GetAccessToken( string appid, string secrect)
+        public static dynamic GetAccessToken(string appid, string secrect)
         {
             var url = string.Format("https://api.weixin.qq.com/cgi-bin/token?grant_type={0}&appid={1}&secret={2}", "client_credential", appid, secrect);
             var client = new HttpClient();
@@ -75,20 +75,34 @@ namespace Deepleo.Weixin.SDK
         ///缩略图（thumb)：64KB，支持JPG格式
         ///2.媒体文件在后台保存时间为3天，即3天后media_id失效
         /// </summary>
-        /// <param name="token"></param>
+        /// <param name="access_token"></param>
         /// <param name="type"></param>
         /// <param name="file"></param>
         /// <returns>media_id</returns>
-        public static string UploadMedia(string token, string type, string file)
+        public static string UploadMedia(string access_token, string type, string file)
         {
-            var url = string.Format("http://api.weixin.qq.com/cgi-bin/media/upload?access_token={0}&type={1}&filename={2}", token, type, Path.GetFileName(file));
+            var url = string.Format("http://api.weixin.qq.com/cgi-bin/media/upload?access_token={0}&type={1}&filename={2}", access_token, type, Path.GetFileName(file));
             var client = new HttpClient();
             var result = client.PostAsync(url, new StreamContent(new FileStream(file, FileMode.Open, FileAccess.Read)));
             if (!result.Result.IsSuccessStatusCode) return string.Empty;
             var media = DynamicJson.Parse(result.Result.Content.ReadAsStringAsync().Result);
             return media.media_id;
         }
-
+        /// <summary>
+        /// 下载多媒体
+        /// 视频文件不支持下载，调用该接口需http协议。
+        /// </summary>
+        /// <param name="access_token"></param>
+        /// <param name="media_id"></param>
+        /// <returns></returns>
+        public static bool DownloadMedia(string access_token, string media_id)
+        {
+            var url = string.Format("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token={0}&media_id={1}", access_token, media_id);
+            var client = new HttpClient();
+            var result = client.GetAsync(url);
+            if (!result.Result.IsSuccessStatusCode) return false;
+            return true;
+        }
 
     }
 }

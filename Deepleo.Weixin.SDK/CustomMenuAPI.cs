@@ -15,8 +15,19 @@ using Codeplex.Data;
 namespace Deepleo.Weixin.SDK
 {
     /// <summary>
-    /// 对应微信API的 "自定义菜单”
+    /// "自定义菜单”
+    /// http://mp.weixin.qq.com/wiki/index.php?title=%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8F%9C%E5%8D%95%E5%88%9B%E5%BB%BA%E6%8E%A5%E5%8F%A3
     /// 注意：自定义菜单事件推送接口见：AcceptMessageAPI
+    /// 创建自定义菜单后，由于微信客户端缓存，需要24小时微信客户端才会展现出来，测试时可以尝试取消关注公众账号后再次关注，则可以看到创建后的效果。
+    /// 自定义菜单种类如下：
+    /// 1、click：点击推事件
+    /// 2、view：跳转URL
+    /// 3、scancode_push：扫码推事件
+    /// 4、scancode_waitmsg：扫码推事件且弹出“消息接收中”提示框
+    /// 5、pic_sysphoto：弹出系统拍照发图
+    /// 6、pic_photo_or_album：弹出拍照或者相册发图
+    /// 7、pic_weixin：弹出微信相册发图器
+    /// 8、location_select：弹出地理位置选择器
     /// </summary>
     public class CustomMenuAPI
     {

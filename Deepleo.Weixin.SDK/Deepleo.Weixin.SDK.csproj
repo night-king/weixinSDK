@@ -49,19 +49,31 @@
     <Compile Include="AcceptMessageAPI.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AdvanceMassReplayMessageAPI.cs" />
     <Compile Include="BasicAPI.cs" />
+    <Compile Include="Cryptography\Cryptography.cs" />
+    <Compile Include="Cryptography\Sample.cs" />
+    <Compile Include="Cryptography\WXBizMsgCrypt.cs" />
     <Compile Include="CustomMenuAPI.cs" />
+    <Compile Include="Entities\WeixinNews.cs" />
     <Compile Include="Helpers\DynamicJson.cs" />
     <Compile Include="Helpers\DynamicXml.cs" />
     <Compile Include="Entities\WeixinMessage.cs" />
+    <Compile Include="MutliServiceAPI.cs" />
+    <Compile Include="ReplayActiveMessageAPI.cs" />
+    <Compile Include="ReplayPassiveMessageAPI.cs" />
     <Compile Include="Helpers\TokenHelper.cs" />
     <Compile Include="Interface\IWeixinExecutor.cs" />
-    <Compile Include="ParameterQrcodeAPI.cs" />
+    <Compile Include="PromotionAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendMessageAPI.cs" />
+    <Compile Include="SmartAPI.cs" />
+    <Compile Include="TemplateMessageAPI.cs" />
     <Compile Include="UserAdminAPI.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Cryptography\Readme.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

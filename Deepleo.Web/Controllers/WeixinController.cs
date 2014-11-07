@@ -45,7 +45,7 @@ namespace Deepleo.Web.Controllers
             WeixinMessage message = null;
             using (var streamReader = new StreamReader(Request.InputStream))
             {
-                message = AcceptMessageAPI.Parse(streamReader.ReadToEnd());
+                message = AcceptMessageAPI.Parse( streamReader.ReadToEnd());
             }
             var response = new WeixinExecutor().Execute(message);
             return new ContentResult

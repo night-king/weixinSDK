@@ -14,52 +14,143 @@ using Codeplex.Data;
 namespace Deepleo.Weixin.SDK
 {
     /// <summary>
-    ///  对应微信API的 "用户管理"
-    ///  注意：
-    ///  1.以下API未实现 ：
-    ///    "分组管理接口"，“网页授权获取用户基本信息”
-    ///  2.获取用户"地理位置"API 见AcceptMessageAPI实现，
-    ///     “地理位置”获取方式有两种：一种是仅在进入会话时上报一次，一种是进入会话后每隔5秒上报一次，公众号可以在公众平台网站中设置。
+    ///  用户管理
+    ///  http://mp.weixin.qq.com/wiki/index.php?title=%E5%88%86%E7%BB%84%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3
+    ///  注意：上报地理位置以推送XML数据包（时间推送）到开发者填写的URL来实现（WeixinExecutor里面）。
     /// </summary>
     public class UserAdminAPI
     {
         /// <summary>
-        /// 获取用户基本信息
+        /// 创建分组
+        /// 注意：一个公众账号，最多支持创建500个分组
+        /// </summary>
+        /// <param name="access_token">调用接口凭证</param>
+        /// <param name="name">分组名字（30个字符以内）</param>
+        /// <returns></returns>
+        public static bool CreateGroup(string access_token, string name)
+        {
+            var builder = new StringBuilder();
+            builder.Append("{")
+                .Append('"' + "group" + '"' + ":")
+                .Append("{")
+                .Append('"' + "name" + '"' + ":").Append(name)
+                .Append("}")
+                .Append("}");
+            var client = new HttpClient();
+            var result = client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/groups/create?access_token={0}", access_token), new StringContent(builder.ToString())).Result;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result).errcode == 0;
+        }
+        /// <summary>
+        /// 查询所有分组
+        /// </summary>
+        /// <param name="access_token">调用接口凭证</param>
+        /// <returns></returns>
+        public static dynamic GetGroups(string access_token)
+        {
+            var client = new HttpClient();
+            var result = client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/groups/get?access_token={0}", access_token), new StringContent("")).Result;
+            if (!result.IsSuccessStatusCode) return null;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+        }
+
+        /// <summary>
+        /// 查询用户所在分组
+        /// </summary>
+        /// <param name="access_token"></param>
+        /// <param name="openid"></param>
+        /// <returns>不为空时，表示查询成功，否则查询失败</returns>
+        public static string GetUserGroup(string access_token, string openid)
+        {
+            var builder = new StringBuilder();
+            builder.Append("{").Append('"' + "openid" + '"' + ":").Append(openid).Append("}");
+            var client = new HttpClient();
+            var result = client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/groups/getid?access_token={0}", access_token), new StringContent(builder.ToString())).Result;
+            if (!result.IsSuccessStatusCode) return string.Empty;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result).groupid;
+        }
+        /// <summary>
+        /// 修改分组名
+        /// </summary>
+        /// <param name="access_token">调用接口凭证</param>
+        /// <param name="id">分组id，由微信分配</param>
+        /// <param name="name">分组名字（30个字符以内）</param>
+        /// <returns></returns>
+        public static bool UpdateGroup(string access_token, string id, string name)
+        {
+            var builder = new StringBuilder();
+            builder.Append("{")
+                .Append('"' + "group" + '"' + ":")
+                .Append("{")
+                .Append('"' + "id" + '"' + ":").Append(id).Append(",")
+                .Append('"' + "name" + '"' + ":").Append(name)
+                .Append("}")
+                .Append("}");
+            var client = new HttpClient();
+            var result = client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/groups/update?access_token={0}", access_token), new StringContent(builder.ToString())).Result;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result).errcode == 0;
+        }
+        /// <summary>
+        /// 移动用户分组
+        /// </summary>
+        /// <param name="access_token">调用接口凭证</param>
+        /// <param name="openid">用户唯一标识符</param>
+        /// <param name="to_groupid">分组id</param>
+        /// <returns></returns>
+        public static bool MoveGroup(string access_token, string openid, string to_groupid)
+        {
+            var builder = new StringBuilder();
+            builder.Append("{")
+                .Append('"' + "openid" + '"' + ":").Append(openid).Append(",")
+                .Append('"' + "to_groupid" + '"' + ":").Append(to_groupid)
+                .Append("}");
+            var client = new HttpClient();
+            var result = client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/groups/members/update?access_token={0}", access_token), new StringContent(builder.ToString())).Result;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result).errcode == 0;
+        }
+        /// <summary>
+        /// 设置备注名
+        /// </summary>
+        /// <param name="access_token">调用接口凭证</param>
+        /// <param name="openid">用户唯一标识符</param>
+        /// <param name="remark">新的备注名，长度必须小于30字符</param>
+        /// <returns></returns>
+        public static bool SetRemark(string access_token, string openid, string remark)
+        {
+            var builder = new StringBuilder();
+            builder.Append("{")
+                .Append('"' + "openid" + '"' + ":").Append(openid).Append(",")
+                .Append('"' + "remark" + '"' + ":").Append(remark)
+                .Append("}");
+            var client = new HttpClient();
+            var result = client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/user/info/updateremark?access_token={0}", access_token), new StringContent(builder.ToString())).Result;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result).errcode == 0;
+        }
+      
+        /// <summary>
+        /// 获取用户基本信息（包括UnionID机制）
+        /// 注意：如果开发者有在多个公众号，或在公众号、移动应用之间统一用户帐号的需求，需要前往微信开放平台（open.weixin.qq.com）绑定公众号后，才可利用UnionID机制来满足上述需求。
         /// </summary>
         /// <param name="token"></param>
         /// <param name="openId"></param>
-        /// <returns></returns>
+        /// <returns>UnionID机制的返回值中将包含“unionid”</returns>
         public static dynamic GetInfo(string token, string openId)
         {
             var client = new HttpClient();
-            var result = client.GetAsync(string.Format("https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}", token, openId)).Result;
+            var result = client.GetAsync(string.Format("https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}&lang=zh_CN", token, openId)).Result;
             if (!result.IsSuccessStatusCode) return null;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
 
         /// <summary>
-        /// 获取订阅者信息
+        /// 获取关注者列表
         /// </summary>
         /// <param name="token"></param>
+        /// <param name="nextOpenId">第一个拉取的OPENID，不填默认从头开始拉取</param>
         /// <returns></returns>
-        public static dynamic GetSubscribes(string token)
+        public static dynamic GetSubscribes(string access_token, string nextOpenId)
         {
             var client = new HttpClient();
-            var result = client.GetAsync(string.Format("https://api.weixin.qq.com/cgi-bin/user/get?access_token={0}", token)).Result;
-            if (!result.IsSuccessStatusCode) return null;
-            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
-        }
-
-        /// <summary>
-        /// 获取订阅者信息
-        /// </summary>
-        /// <param name="token"></param>
-        /// <param name="nextOpenId"></param>
-        /// <returns></returns>
-        public static dynamic GetSubscribes(string token, string nextOpenId)
-        {
-            var client = new HttpClient();
-            var result = client.GetAsync(string.Format("https://api.weixin.qq.com/cgi-bin/user/get?access_token={0}&next_openid={1}", token, nextOpenId)).Result;
+            var result = client.GetAsync(string.Format("https://api.weixin.qq.com/cgi-bin/user/get?access_token={0}&next_openid={1}", access_token, nextOpenId)).Result;
             if (!result.IsSuccessStatusCode) return null;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
