@@ -70,7 +70,7 @@
 
 1）官方QQ群：173564082 
 
-2）论坛：http://www.weixinsdk.net/指定板块交流解答
+2）论坛：http://www.weixinsdk.net/
 
 3）作者QQ：2586662969
 
