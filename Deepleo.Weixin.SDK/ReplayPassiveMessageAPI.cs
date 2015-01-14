@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*--------------------------------------------------------------------------
+* ReplayPassiveMessageAPI.cs
+ *Auth:deepleo
+* Date:2015.01.15
+* Email:2586662969@qq.com
+* Website:http://www.weixinsdk.net
+*--------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,7 +64,7 @@ namespace Deepleo.Weixin.SDK
                 "<PicUrl><![CDATA[{2}]]></PicUrl>" +
                 "<Url><![CDATA[{3}]]></Url>" +
                 "</item>",
-               news.Title, news.Description, news.PicUrl, news.Url
+               news.title, news.description, news.picurl, news.url
              ));
             builder.Append("</Articles></xml>");
             return builder.ToString();
@@ -88,7 +96,7 @@ namespace Deepleo.Weixin.SDK
                     "<PicUrl><![CDATA[{2}]]></PicUrl>" +
                     "<Url><![CDATA[{3}]]></Url>" +
                     "</item>",
-                   c.Title, c.Description, c.PicUrl, c.Url
+                   c.title, c.description, c.picurl, c.url
                  ));
             }
             builder.Append("</Articles></xml>");

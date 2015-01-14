@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*--------------------------------------------------------------------------
+* SmartAPI.cs
+ *Auth:deepleo
+* Date:2015.01.15
+* Email:2586662969@qq.com
+ * Website:http://www.weixinsdk.net
+*--------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

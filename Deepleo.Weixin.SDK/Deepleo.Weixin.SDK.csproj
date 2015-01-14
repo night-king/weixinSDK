@@ -51,10 +51,12 @@
     </Compile>
     <Compile Include="AdvanceMassReplayMessageAPI.cs" />
     <Compile Include="BasicAPI.cs" />
-    <Compile Include="Cryptography\Cryptography.cs" />
-    <Compile Include="Cryptography\Sample.cs" />
-    <Compile Include="Cryptography\WXBizMsgCrypt.cs" />
+    <Compile Include="InterfaceStatisticsAPI.cs" />
+    <Compile Include="MessageStatisticsAPI.cs" />
+    <Compile Include="NewsStatisticsAPI.cs" />
+    <Compile Include="ServiceAdminAPI.cs" />
     <Compile Include="CustomMenuAPI.cs" />
+    <Compile Include="Entities\WeixinArtcle.cs" />
     <Compile Include="Entities\WeixinNews.cs" />
     <Compile Include="Helpers\DynamicJson.cs" />
     <Compile Include="Helpers\DynamicXml.cs" />
@@ -66,13 +68,10 @@
     <Compile Include="Interface\IWeixinExecutor.cs" />
     <Compile Include="PromotionAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SendMessageAPI.cs" />
     <Compile Include="SmartAPI.cs" />
+    <Compile Include="UserStatisticsAPI.cs" />
     <Compile Include="TemplateMessageAPI.cs" />
     <Compile Include="UserAdminAPI.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Cryptography\Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

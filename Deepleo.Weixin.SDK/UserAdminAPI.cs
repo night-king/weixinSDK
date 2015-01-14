@@ -3,7 +3,9 @@
  *Auth:deepleo
 * Date:2013.12.31
 * Email:2586662969@qq.com
+* Website:http://www.weixinsdk.net
 *--------------------------------------------------------------------------*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;

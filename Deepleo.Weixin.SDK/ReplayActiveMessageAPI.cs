@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*--------------------------------------------------------------------------
+* ReplayActiveMessageAPI.cs
+ *Auth:deepleo
+* Date:2015.01.15
+* Email:2586662969@qq.com
+* Website:http://www.weixinsdk.net
+*--------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -150,10 +158,10 @@ namespace Deepleo.Weixin.SDK
                 .Append('"' + "news" + '"' + ":")
                 .Append("{").Append('"' + "articles" + '"' + ":").Append("[")
                    .Append("{")
-                   .Append('"' + "title" + '"' + ":").Append(news.Title).Append(",")
-                   .Append('"' + "description" + '"' + ":").Append(news.Description).Append(",")
-                   .Append('"' + "url" + '"' + ":").Append(news.Url).Append(",")
-                   .Append('"' + "picurl" + '"' + ":").Append(news.PicUrl)
+                   .Append('"' + "title" + '"' + ":").Append(news.title).Append(",")
+                   .Append('"' + "description" + '"' + ":").Append(news.description).Append(",")
+                   .Append('"' + "url" + '"' + ":").Append(news.url).Append(",")
+                   .Append('"' + "picurl" + '"' + ":").Append(news.picurl)
                    .Append("}")
                 .Append("]").Append("}");
             var client = new HttpClient();
@@ -179,10 +187,10 @@ namespace Deepleo.Weixin.SDK
             {
                 var n = news[i];
                 builder.Append("{")
-                       .Append('"' + "title" + '"' + ":").Append(n.Title).Append(",")
-                       .Append('"' + "description" + '"' + ":").Append(n.Description).Append(",")
-                       .Append('"' + "url" + '"' + ":").Append(n.Url).Append(",")
-                       .Append('"' + "picurl" + '"' + ":").Append(n.PicUrl)
+                       .Append('"' + "title" + '"' + ":").Append(n.title).Append(",")
+                       .Append('"' + "description" + '"' + ":").Append(n.description).Append(",")
+                       .Append('"' + "url" + '"' + ":").Append(n.url).Append(",")
+                       .Append('"' + "picurl" + '"' + ":").Append(n.picurl)
                        .Append("}");
                 if (i != news.Count - 1) builder.Append(",");
             }

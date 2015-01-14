@@ -1,7 +1,17 @@
-﻿using System;
+﻿/*--------------------------------------------------------------------------
+* TemplateMessageAPI.cs
+ *Auth:deepleo
+* Date:2015.01.15
+* Email:2586662969@qq.com
+ * Website:http://www.weixinsdk.net
+*--------------------------------------------------------------------------*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net.Http;
+using Codeplex.Data;
 
 namespace Deepleo.Weixin.SDK
 {
@@ -18,6 +28,64 @@ namespace Deepleo.Weixin.SDK
     /// </summary>
     public class TemplateMessageAPI
     {
+
+        /// <summary>
+        /// 设置所属行业
+        /// 设置行业可在MP中完成，每月可修改行业1次
+        /// 行业代码查询,请登录微信公众号后台查看
+        /// </summary>
+        /// <param name="access_token"></param>
+        /// <param name="industry_id1">行业代码</param>
+        /// <param name="industry_id2">行业代码</param>
+        /// <returns>官方api未给出返回内容,应该是errcode=0就表示成功</returns>
+        public static dynamic SetIndustry(string access_token, string industry_id1, string industry_id2)
+        {
+            var url = string.Format("https://api.weixin.qq.com/cgi-bin/template/api_set_industry?access_token={0}", access_token);
+            var client = new HttpClient();
+            var builder = new StringBuilder();
+            builder
+                .Append("{")
+                .Append('"' + "industry_id1" + '"' + ":").Append(industry_id1).Append(",")
+                .Append('"' + "industry_id2" + '"' + ":").Append(industry_id2)
+                .Append("}");
+            var result = client.PostAsync(url, new StringContent(builder.ToString())).Result;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+        }
+        /// <summary>
+        /// 获得模板ID
+        /// </summary>
+        /// <param name="access_token"></param>
+        /// <param name="template_id_short">模板库中模板的编号</param>
+        /// <returns> {"errcode":0,"errmsg":"ok","template_id":"Doclyl5uP7Aciu-qZ7mJNPtWkbkYnWBWVja26EGbNyk"}
+        /// </returns>
+        public static dynamic GetTemplates(string access_token, string template_id_short)
+        {
+            var url = string.Format("https://api.weixin.qq.com/cgi-bin/template/api_add_template?access_token={0}", access_token);
+            var client = new HttpClient();
+            var builder = new StringBuilder();
+            builder
+                .Append("{")
+                .Append('"' + "template_id_short" + '"' + ":").Append(template_id_short)
+                .Append("}");
+            var result = client.PostAsync(url, new StringContent(builder.ToString())).Result;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+        }
+        /// <summary>
+        /// 发送模板消息
+        /// 在模版消息发送任务完成后，微信服务器会将是否送达成功作为通知，发送到开发者中心中填写的服务器配置地址中。
+        /// 参见WeixinExecutor.cs TEMPLATESENDJOBFINISH Event
+        /// </summary>
+        /// <param name="access_token"></param>
+        /// <param name="content">模板消息体,由于模板众多,且结构不一，请开发者自行按照模板自行构建模板消息体,模板消息体为json字符串,请登录微信公众号后台查看</param>
+        /// <returns>  { "errcode":0,"errmsg":"ok", "msgid":200228332}
+        /// </returns>
+        public static dynamic SendTemplateMessage(string access_token, string content)
+        {
+            var url = string.Format("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={0}", access_token);
+            var client = new HttpClient();
+            var result = client.PostAsync(url, new StringContent(content)).Result;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+        }
 
     }
 }

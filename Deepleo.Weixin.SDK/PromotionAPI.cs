@@ -1,9 +1,11 @@
 ﻿/*--------------------------------------------------------------------------
-* ParameterQrcodeAPI.cs
+* PromotionAPI.cs
  *Auth:deepleo
-* Date:2014.05.05
+* Date:Date:2015.01.15
 * Email:2586662969@qq.com
+* Website:http://www.weixinsdk.net
 *--------------------------------------------------------------------------*/
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +21,7 @@ namespace Deepleo.Weixin.SDK
         QR_SCENE = 2
     }
     /// <summary>
-    /// 推广支持
+    /// 帐号管理
     /// http://mp.weixin.qq.com/wiki/index.php?title=%E7%94%9F%E6%88%90%E5%B8%A6%E5%8F%82%E6%95%B0%E7%9A%84%E4%BA%8C%E7%BB%B4%E7%A0%81
     /// </summary>
     public class PromotionAPI

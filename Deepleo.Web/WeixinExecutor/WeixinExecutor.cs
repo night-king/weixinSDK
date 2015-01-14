@@ -77,6 +77,29 @@ namespace Deepleo.Web
                             }
                             #endregion
                             break;
+                        case "MASSSENDJOBFINISH"://事件推送群发结果,
+                            {
+                                var msgId = message.Body.MsgID;
+                                var msgStatus = message.Body.Status;//“send success”或“send fail”或“err(num)” 
+                                //send success时，也有可能因用户拒收公众号的消息、系统错误等原因造成少量用户接收失败。
+                                //err(num)是审核失败的具体原因，可能的情况如下：err(10001)涉嫌广告, err(20001)涉嫌政治, err(20004)涉嫌社会, err(20002)涉嫌色情, err(20006)涉嫌违法犯罪,
+                                //err(20008)涉嫌欺诈, err(20013)涉嫌版权, err(22000)涉嫌互推(互相宣传), err(21000)涉嫌其他
+                                var totalCount = message.Body.TotalCount;//group_id下粉丝数；或者openid_list中的粉丝数
+                                var filterCount = message.Body.FilterCount;//过滤（过滤是指特定地区、性别的过滤、用户设置拒收的过滤，用户接收已超4条的过滤）后，准备发送的粉丝数，原则上，FilterCount = SentCount + ErrorCount
+                                var sentCount = message.Body.SentCount;//发送成功的粉丝数
+                                var errorCount = message.Body.FilterCount;//发送失败的粉丝数
+                                //TODO:开发者自己的处理逻辑
+
+                            }
+                            break;
+                        case "TEMPLATESENDJOBFINISH"://模版消息结果,
+                            {
+                                var msgId = message.Body.MsgID;
+                                var msgStatus = message.Body.Status;//发送状态为成功: success; 用户拒绝接收:failed:user block; 发送状态为发送失败（非用户拒绝）:failed: system failed
+
+                            }
+                            break;
+                      
                         case "location"://上报地理位置事件
                             #region 上报地理位置事件
                             var lat = message.Body.Latitude.Value.ToString();
@@ -102,10 +125,10 @@ namespace Deepleo.Web
                             var userImage = message.Body.PicUrl.Value;//用户语音消息文字
                             result = ReplayPassiveMessageAPI.RepayNews(openId, myUserName, new WeixinNews
                             {
-                                Title = "您刚才发送了图片消息",
-                                PicUrl = string.Format("{0}/Images/ad.jpg", domain),
-                                Description = "点击查看图片",
-                                Url = userImage
+                                title = "您刚才发送了图片消息",
+                                picurl = string.Format("{0}/Images/ad.jpg", domain),
+                                description = "点击查看图片",
+                                url = userImage
                             });
                             #endregion
                             break;
@@ -118,10 +141,10 @@ namespace Deepleo.Web
                                     result = ReplayPassiveMessageAPI.RepayNews(openId, myUserName, new List<WeixinNews>()
                                     {
                                         new WeixinNews{
-                                            Title="我的帐户",
-                                            Url=string.Format("{0}/user?openId={1}",domain,openId),
-                                            Description="点击查看帐户详情",
-                                            PicUrl=string.Format("{0}/Images/ad.jpg",domain)
+                                            title="我的帐户",
+                                            url=string.Format("{0}/user?openId={1}",domain,openId),
+                                            description="点击查看帐户详情",
+                                            picurl=string.Format("{0}/Images/ad.jpg",domain)
                                         },
                                     });
                                     #endregion

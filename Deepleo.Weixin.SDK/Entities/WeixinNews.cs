@@ -7,9 +7,9 @@ namespace Deepleo.Weixin.SDK.Entities
 {
     public class WeixinNews
     {
-        public string Title { set; get; }
-        public string Description { set; get; }
-        public string PicUrl { set; get; }
-        public string Url { set; get; }
+        public string title { set; get; }
+        public string description { set; get; }
+        public string picurl { set; get; }
+        public string url { set; get; }
     }
 }
