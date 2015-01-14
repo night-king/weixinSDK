@@ -86,3 +86,8 @@
 
 
 7.源代码托管：https://github.com/night-king/weixinSDK
+
+
+8.Copyright and license
+
+Code and documentation copyright 2011-2015. Code released under the MIT license. Docs released under Creative Commons.
