@@ -1,12 +1,14 @@
 ﻿WeixinSDK.net使用帮助
 
 1.使用对象
+
 本API目前只针对微信公众平台开发者文档所有API进行包装：http://mp.weixin.qq.com/wiki/home/index.html
 不支持微信企业号和移动端API.
 也就是微信服务号和订阅号的开发。
 但是不排除企业号和移动端API共有部分的调用，对于这部分本SDK不保证其能调用成功。
 
 2.API包装的核心思想
+
 运用Dynamic(.net 4.0以及以上版本支持)在程序中传递微信所需的结构化（xml,json）对象，减少大量代码，实现轻量级。
 让您可以像Python一样书写代码。
 
@@ -23,24 +25,24 @@
                 因为他们都可以归为消息，所以只需要提供一个统一的解析方法即可。当然，这个方法返回的是一个动态对象。
                 接受语音识别消息，只是在返回的语音消息xml数据中多了Recognition（注：需要公众号有接收语音识别结果的权限）
 (2)AdvanceMassReplayMessageAPI.cs     对应微信API的 "发送消息”=》"高级群发消息接口"
-(3)BasicAPI.cs                                         对应微信API的 "基础支持"
+(3)BasicAPI.cs                                 对应微信API的 "基础支持"
 (4)CustomMenuAPI.cs                            对应微信API的 "自定义菜单管理"
-(5)InterfaceStatisticsAPI.cs                       对应微信API的 "数据统计接口" =>"接口分析数据接口"
+(5)InterfaceStatisticsAPI.cs                   对应微信API的 "数据统计接口" =>"接口分析数据接口"
 
-(6)MessageStatisticsAPI.cs                        对应微信API的 "数据统计接口" =>"消息分析数据接口"
-(7)MutliServiceAPI.cs                              对应微信API的 "多客服功能"
-(8)NewsStatisticsAPI.cs                            对应微信API的 "数据统计接口" =>"图文分析数据接口"
-(9)PromotionAPI.cs                                 对应微信API的 "帐号管理"
-(10)ReplayActiveMessageAPI.cs               对应微信API的 "发送消息”=》"客服接口"=>"发送(主动)客服消息"
+(6)MessageStatisticsAPI.cs                     对应微信API的 "数据统计接口" =>"消息分析数据接口"
+(7)MutliServiceAPI.cs                          对应微信API的 "多客服功能"
+(8)NewsStatisticsAPI.cs                        对应微信API的 "数据统计接口" =>"图文分析数据接口"
+(9)PromotionAPI.cs                             对应微信API的 "帐号管理"
+(10)ReplayActiveMessageAPI.cs                  对应微信API的 "发送消息”=》"客服接口"=>"发送(主动)客服消息"
 
-(11)ReplayPassiveMessageAPI.cs              对应微信API的 "发送消息”=》"被动回复消息"
-(12)ServiceAdminAPI.cs                           对应微信API的 "多客服功能"=>"客服管理"
-(13)SmartAPI.cs                                       对应微信API的 "智能接口"
-(14)TemplateMessageAPI.cs                     对应微信API的 "发送消息”=》"模板消息接口"
-(15)UserAdminAPI.cs                              对应微信API的 "用户管理"
-    注意：获取用户地理位置在接受Location事件时获取，解析地址位置数据包在AcceptMessageAPI.Parse(string message)方法中，详细见:(2)AcceptMessageAPI.cs 。
-                网页授权获取用户基本信息和获取用户网络状态（JS）接口暂时不包含在本SDK中。
-(16)UserStatisticsAPI.cs                          对应微信API的 "数据统计接口" =>"用户分析数据接口"
+(11)ReplayPassiveMessageAPI.cs                 对应微信API的 "发送消息”=》"被动回复消息"
+(12)ServiceAdminAPI.cs                         对应微信API的 "多客服功能"=>"客服管理"
+(13)SmartAPI.cs                                对应微信API的 "智能接口"
+(14)TemplateMessageAPI.cs                      对应微信API的 "发送消息”=》"模板消息接口"
+(15)UserAdminAPI.cs                            对应微信API的 "用户管理"
+注意：获取用户地理位置在接受Location事件时获取，解析地址位置数据包在AcceptMessageAPI.Parse(string message)方法中，详细见:(2)AcceptMessageAPI.cs 。
+网页授权获取用户基本信息和获取用户网络状态（JS）接口暂时不包含在本SDK中。
+(16)UserStatisticsAPI.cs                        对应微信API的 "数据统计接口" =>"用户分析数据接口"
 
 微信支付、微信JS接口、微信小店接口、微信卡券、设备功能接口暂未开发。
 
