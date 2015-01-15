@@ -27,8 +27,9 @@ namespace Deepleo.Weixin.SDK
         /// <param name="access_token">调用接口凭证</param>
         /// <param name="touser">普通用户openid</param>
         /// <param name="content">文本消息内容</param>
+        /// <param name="kf_account">完整客服账号，格式为：账号前缀@公众号微信号</param>
         /// <returns></returns>
-        public static bool RepayText(string access_token, string touser, string content)
+        public static bool RepayText(string access_token, string touser, string content, string kf_account = null)
         {
             var builder = new StringBuilder();
             builder.Append("{")
@@ -37,8 +38,16 @@ namespace Deepleo.Weixin.SDK
                 .Append('"' + "text" + '"' + ":")
                 .Append("{")
                 .Append('"' + "content" + '"' + ":").Append(content)
-                .Append("}")
                 .Append("}");
+            if (!string.IsNullOrEmpty(kf_account))
+            {
+                builder.Append(",");
+                builder.Append('"' + "customservice" + '"' + ":")
+                       .Append("{")
+                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append("}");
+            }
+            builder.Append("}");
             var client = new HttpClient();
             return client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token), new StringContent(builder.ToString())).Result.IsSuccessStatusCode;
         }
@@ -49,8 +58,9 @@ namespace Deepleo.Weixin.SDK
         /// <param name="access_token">调用接口凭证</param>
         /// <param name="touser">普通用户openid</param>
         /// <param name="media_id">发送的图片的媒体ID</param>
+        /// <param name="kf_account">完整客服账号，格式为：账号前缀@公众号微信号</param>
         /// <returns></returns>
-        public static bool RepayImage(string access_token, string touser, string media_id)
+        public static bool RepayImage(string access_token, string touser, string media_id, string kf_account = null)
         {
             var builder = new StringBuilder();
             builder.Append("{")
@@ -59,8 +69,16 @@ namespace Deepleo.Weixin.SDK
                 .Append('"' + "image" + '"' + ":")
                 .Append("{")
                 .Append('"' + "media_id" + '"' + ":").Append(media_id)
-                .Append("}")
                 .Append("}");
+            if (!string.IsNullOrEmpty(kf_account))
+            {
+                builder.Append(",");
+                builder.Append('"' + "customservice" + '"' + ":")
+                       .Append("{")
+                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append("}");
+            }
+            builder.Append("}");
             var client = new HttpClient();
             return client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token), new StringContent(builder.ToString())).Result.IsSuccessStatusCode;
         }
@@ -70,8 +88,9 @@ namespace Deepleo.Weixin.SDK
         /// <param name="access_token">调用接口凭证</param>
         /// <param name="touser">普通用户openid</param>
         /// <param name="media_id">发送的语音的媒体ID</param>
+        /// <param name="kf_account">完整客服账号，格式为：账号前缀@公众号微信号</param>
         /// <returns></returns>
-        public static bool RepayVoice(string access_token, string touser, string media_id)
+        public static bool RepayVoice(string access_token, string touser, string media_id, string kf_account = null)
         {
             var builder = new StringBuilder();
             builder.Append("{")
@@ -80,8 +99,16 @@ namespace Deepleo.Weixin.SDK
                 .Append('"' + "voice" + '"' + ":")
                 .Append("{")
                 .Append('"' + "media_id" + '"' + ":").Append(media_id)
-                .Append("}")
                 .Append("}");
+            if (!string.IsNullOrEmpty(kf_account))
+            {
+                builder.Append(",");
+                builder.Append('"' + "customservice" + '"' + ":")
+                       .Append("{")
+                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append("}");
+            }
+            builder.Append("}");
             var client = new HttpClient();
             return client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token), new StringContent(builder.ToString())).Result.IsSuccessStatusCode;
         }
@@ -94,8 +121,9 @@ namespace Deepleo.Weixin.SDK
         /// <param name="thumb_media_id">缩略图的媒体ID</param>
         /// <param name="title">视频消息的标题</param>
         /// <param name="description">视频消息的描述</param>
+        /// <param name="kf_account">完整客服账号，格式为：账号前缀@公众号微信号</param>
         /// <returns></returns>
-        public static bool RepayVedio(string access_token, string touser, string media_id, string thumb_media_id, string title, string description)
+        public static bool RepayVedio(string access_token, string touser, string media_id, string thumb_media_id, string title, string description, string kf_account = null)
         {
             var builder = new StringBuilder();
             builder.Append("{")
@@ -107,8 +135,16 @@ namespace Deepleo.Weixin.SDK
                 .Append('"' + "thumb_media_id" + '"' + ":").Append(thumb_media_id).Append(",")
                 .Append('"' + "title" + '"' + ":").Append(title).Append(",")
                 .Append('"' + "description" + '"' + ":").Append(description)
-                .Append("}")
                 .Append("}");
+            if (!string.IsNullOrEmpty(kf_account))
+            {
+                builder.Append(",");
+                builder.Append('"' + "customservice" + '"' + ":")
+                       .Append("{")
+                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append("}");
+            }
+            builder.Append("}");
             var client = new HttpClient();
             return client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token), new StringContent(builder.ToString())).Result.IsSuccessStatusCode;
         }
@@ -123,8 +159,9 @@ namespace Deepleo.Weixin.SDK
         /// <param name="thumb_media_id">缩略图的媒体ID</param>
         /// <param name="title">音乐标题</param>
         /// <param name="description">音乐描述</param>
+        /// <param name="kf_account">完整客服账号，格式为：账号前缀@公众号微信号</param>
         /// <returns></returns>
-        public static bool RepayMusic(string access_token, string touser, string musicurl, string hqmusicurl, string thumb_media_id, string title, string description)
+        public static bool RepayMusic(string access_token, string touser, string musicurl, string hqmusicurl, string thumb_media_id, string title, string description, string kf_account = null)
         {
             var builder = new StringBuilder();
             builder.Append("{")
@@ -137,8 +174,16 @@ namespace Deepleo.Weixin.SDK
                 .Append('"' + "musicurl" + '"' + ":").Append(musicurl).Append(",")
                 .Append('"' + "hqmusicurl" + '"' + ":").Append(hqmusicurl).Append(",")
                 .Append('"' + "thumb_media_id" + '"' + ":").Append(thumb_media_id).Append(",")
-                .Append("}")
                 .Append("}");
+            if (!string.IsNullOrEmpty(kf_account))
+            {
+                builder.Append(",");
+                builder.Append('"' + "customservice" + '"' + ":")
+                       .Append("{")
+                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append("}");
+            }
+            builder.Append("}");
             var client = new HttpClient();
             return client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token), new StringContent(builder.ToString())).Result.IsSuccessStatusCode;
         }
@@ -148,22 +193,35 @@ namespace Deepleo.Weixin.SDK
         /// <param name="access_token">调用接口凭证</param>
         /// <param name="touser">普通用户openid</param>
         /// <param name="news"></param>
+        /// <param name="kf_account">完整客服账号，格式为：账号前缀@公众号微信号</param>
         /// <returns></returns>
-        public static bool RepayNews(string access_token, string touser, WeixinNews news)
+        public static bool RepayNews(string access_token, string touser, WeixinNews news, string kf_account = null)
         {
             var builder = new StringBuilder();
             builder.Append("{")
                 .Append('"' + "touser" + '"' + ":").Append(touser).Append(",")
                 .Append('"' + "msgtype" + '"' + ":").Append("news").Append(",")
                 .Append('"' + "news" + '"' + ":")
-                .Append("{").Append('"' + "articles" + '"' + ":").Append("[")
-                   .Append("{")
-                   .Append('"' + "title" + '"' + ":").Append(news.title).Append(",")
-                   .Append('"' + "description" + '"' + ":").Append(news.description).Append(",")
-                   .Append('"' + "url" + '"' + ":").Append(news.url).Append(",")
-                   .Append('"' + "picurl" + '"' + ":").Append(news.picurl)
-                   .Append("}")
-                .Append("]").Append("}");
+                .Append("{")
+                   .Append('"' + "articles" + '"' + ":")
+                     .Append("[")
+                     .Append("{")
+                     .Append('"' + "title" + '"' + ":").Append(news.title).Append(",")
+                     .Append('"' + "description" + '"' + ":").Append(news.description).Append(",")
+                     .Append('"' + "url" + '"' + ":").Append(news.url).Append(",")
+                     .Append('"' + "picurl" + '"' + ":").Append(news.picurl)
+                     .Append("}")
+                   .Append("]")
+                .Append("}");
+            if (!string.IsNullOrEmpty(kf_account))
+            {
+                builder.Append(",");
+                builder.Append('"' + "customservice" + '"' + ":")
+                       .Append("{")
+                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append("}");
+            }
+            builder.Append("}");
             var client = new HttpClient();
             return client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token), new StringContent(builder.ToString())).Result.IsSuccessStatusCode;
         }
@@ -174,8 +232,9 @@ namespace Deepleo.Weixin.SDK
         /// <param name="access_token">调用接口凭证</param>
         /// <param name="touser">普通用户openid</param>
         /// <param name="news"></param>
+        /// <param name="kf_account">完整客服账号，格式为：账号前缀@公众号微信号</param>
         /// <returns></returns>
-        public static bool RepayNews(string access_token, string touser, List<WeixinNews> news)
+        public static bool RepayNews(string access_token, string touser, List<WeixinNews> news, string kf_account = null)
         {
             var builder = new StringBuilder();
             builder.Append("{")
@@ -194,7 +253,17 @@ namespace Deepleo.Weixin.SDK
                        .Append("}");
                 if (i != news.Count - 1) builder.Append(",");
             }
-            builder.Append("]").Append("}");
+            builder.Append("]")
+                   .Append("}");
+            if (!string.IsNullOrEmpty(kf_account))
+            {
+                builder.Append(",");
+                builder.Append('"' + "customservice" + '"' + ":")
+                       .Append("{")
+                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append("}");
+            }
+            builder.Append("}");
             var client = new HttpClient();
             return client.PostAsync(string.Format("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={0}", access_token), new StringContent(builder.ToString())).Result.IsSuccessStatusCode;
         }
