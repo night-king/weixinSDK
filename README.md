@@ -91,3 +91,5 @@
 8.Copyright and license
 
 Code and documentation copyright 2011-2015. Code released under the MIT license. Docs released under Creative Commons.
+
+9.建议加入官方QQ群第一时间获取API更新的最新动态：173564082
