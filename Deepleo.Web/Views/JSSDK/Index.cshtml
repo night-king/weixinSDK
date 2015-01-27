@@ -1,0 +1,70 @@
+﻿@model Deepleo.Web.Models.JSSDKModel
+@{
+    ViewBag.Title = "微信JSSDK";
+}
+appId: @Model.appId<br />
+nonceStr: @Model.nonceStr<br />
+timestamp: @Model.timestamp<br />
+signature: @Model.signature<br />
+jsapiTicket: @Model.jsapiTicket<br />
+string1:@Model.string1<br />
+<hr />
+请点击微信右上角的<b>分享给朋友,分享到朋友圈</b>查看效果<br />
+share: @Model.shareUrl<br />
+share img url: @Model.shareImg<br />
+扫描二维码在微信中浏览:<br />
+<img src="../../Images/jssdk-demo.png" /><br />
+<span>确认签名算法正确，可用<a href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign">http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign</a>
+    页面工具进行校验。</span>
+<script type="text/javascript">
+    /*
+    * 注意：
+    * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+    * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+    * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+    *
+    * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+    * 邮箱地址：weixin-open@qq.com
+    * 邮件主题：【微信JS-SDK反馈】具体问题
+    * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+    */
+    wx.config({
+        debug: true,// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '@Model.appId',// 必填，公众号的唯一标识
+        timestamp: @Model.timestamp,// 必填，生成签名的时间戳
+        nonceStr: '@Model.nonceStr',// 必填，生成签名的随机串
+        signature: '@Model.signature',// 必填，签名，
+        jsApiList: [ 
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+      ] 
+    });
+
+     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+    wx.ready(function(){
+       alert("ready");
+    });
+
+    var shareData={
+        title: '一个轻量级的，让您可以像Python一样自由书写代码的微信公众平台SDK(.net版本)',
+        desc: '一个轻量级的，让您可以像Python一样自由书写代码的微信公众平台SDK(.net版本) http://weixinsdk.net/ , 帮助第三方为用户提供更优质的移动web服务',
+        link: '@Model.shareUrl',
+        imgUrl: '@Model.shareImg',
+        success: function (res) { 
+          alert(res.errMsg);
+         },
+        cancel: function (res) { 
+           alert(res.errMsg);
+         }
+      };
+
+      //分享给朋友
+    wx.onMenuShareAppMessage(shareData);
+      //分享到朋友圈
+    wx.onMenuShareTimeline(shareData);
+
+    // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+    wx.error(function(res){
+         alert(res.errMsg);
+    });
+</script>

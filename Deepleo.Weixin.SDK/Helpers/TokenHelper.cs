@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Threading;
 using Deepleo.Weixin.SDK;
+using Deepleo.Weixin.SDK.JSSDK;
 
 namespace Deepleo.Weixin.SDK.Helpers
 {
@@ -18,27 +19,33 @@ namespace Deepleo.Weixin.SDK.Helpers
         public DateTime LastRunDateTime { private set; get; }
         public string AppId { private set; get; }
         public string AppSecrect { private set; get; }
+        public bool IsOpenJSTickect { private set; get; }
 
         /// <summary>
-        /// 
+        /// 建议小于7200s,比如6000s
         /// </summary>
-        /// <param name="IntervalInSeconds">建议小于7200s,比如3600s</param>
+        /// <param name="IntervalInSeconds"></param>
         /// <param name="appId"></param>
         /// <param name="appSecrect"></param>
-        public TokenHelper(int IntervalInSeconds, string appId, string appSecrect)
+        /// <param name="isOpenJSTickect">是否打开JSSDK生成Tickect功能
+        /// false:无法通过GetJSTickect获取JSTickect
+        /// </param>
+        public TokenHelper(int IntervalInSeconds, string appId, string appSecrect, bool isOpenJSTickect = false)
         {
             Interval = IntervalInSeconds;
             AppId = appId;
             AppSecrect = appSecrect;
             Status = false;
             LastRunDateTime = DateTime.MinValue;
+            IsOpenJSTickect = isOpenJSTickect;
         }
+
         public void Run()
         {
             if (Status) throw new Exception(string.Format("Token Manager is already running."));
             Status = true;
             refreshToken();
-            _timer = new System.Timers.Timer(Interval*1000);
+            _timer = new System.Timers.Timer(Interval * 1000);
             _timer.Elapsed += delegate
             {
                 refreshToken();
@@ -53,14 +60,43 @@ namespace Deepleo.Weixin.SDK.Helpers
             _timer = null;
             Status = false;
         }
+
         private string _token;
+        private string _jsTickect;
+
         private System.Timers.Timer _timer = null;
         public event EventHandler<EventArgs> TokenChangedEvent;
+        public event EventHandler<EventArgs> JSTickectChangedEvent;
         public event EventHandler<ThreadExceptionEventArgs> ErrorEvent;
-        public string GetToken(bool isRefresh)
+
+        /// <summary>
+        /// 获取access_token
+        /// 刷新access_token后，JSTickect会自动刷新
+        /// </summary>
+        /// <param name="isForceRefresh">是否强制刷新，建议不要频繁刷新</param>
+        /// <returns></returns>
+        public string GetToken(bool isForceRefresh = false)
         {
-            if (isRefresh) refreshToken();
+            if (isForceRefresh)
+            {
+                refreshToken();
+                if (IsOpenJSTickect) refreshJSTickect();
+            }
             return _token;
+        }
+
+        /// <summary>
+        /// 使用JSSDK权限签名算法jsapi_ticket
+        /// </summary>
+        /// <param name="isForceRefresh">是否强制刷新，建议不要频繁刷新</param>
+        /// <returns></returns>
+        public string GetJSTickect(bool isForceRefresh = false)
+        {
+            if (!IsOpenJSTickect) return string.Empty;
+            if (string.IsNullOrEmpty(_token)) refreshToken();
+            if (string.IsNullOrEmpty(_jsTickect)) refreshJSTickect();
+            else if (isForceRefresh) refreshJSTickect();
+            return _jsTickect;
         }
 
         private void refreshToken()
@@ -70,13 +106,30 @@ namespace Deepleo.Weixin.SDK.Helpers
             try
             {
                 string newToken = BasicAPI.GetAccessToken(AppId, AppSecrect).access_token;
-                _token=newToken;
+                _token = newToken;
+                if (TokenChangedEvent != null) TokenChangedEvent(this, EventArgs.Empty);
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 if (ErrorEvent != null) ErrorEvent(this, new ThreadExceptionEventArgs(ex));
             }
-            if (TokenChangedEvent != null) TokenChangedEvent(this, EventArgs.Empty);
+        }
+
+        private void refreshJSTickect()
+        {
+            if (!Status) return;
+            LastRunDateTime = DateTime.Now;
+            try
+            {
+                string newTickect = JSAPI.GetTickect(_token).ticket;
+                _jsTickect = newTickect;
+                if (JSTickectChangedEvent != null) JSTickectChangedEvent(this, EventArgs.Empty);
+            }
+            catch (Exception ex)
+            {
+                if (ErrorEvent != null) ErrorEvent(this, new ThreadExceptionEventArgs(ex));
+            }
+
         }
     }
 }

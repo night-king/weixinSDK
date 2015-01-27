@@ -31,7 +31,7 @@ namespace Deepleo.Web
         public string Execute(WeixinMessage message)
         {
             var result = "";
-            var domain = "http://www.weixinsdk.net/";//请更改成你的域名
+            var domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];//请更改成你的域名
             var openId = message.Body.FromUserName.Value;
             var myUserName = message.Body.ToUserName.Value;
             //这里需要调用TokenHelper获取Token的，省略了。
@@ -99,7 +99,7 @@ namespace Deepleo.Web
 
                             }
                             break;
-                      
+
                         case "location"://上报地理位置事件
                             #region 上报地理位置事件
                             var lat = message.Body.Latitude.Value.ToString();

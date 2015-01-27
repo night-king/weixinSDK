@@ -25,7 +25,7 @@ namespace Deepleo.Web.Controllers
         [ActionName("Index")]
         public ActionResult Get(string signature, string timestamp, string nonce, string echostr)
         {
-            var token = "123456789";//微信公众平台后台设置的Token
+            var token = WeixinConfig.Token;//微信公众平台后台设置的Token
             if (string.IsNullOrEmpty(token)) return Content("请先设置Token！");
             var ent = "";
             if (!BasicAPI.CheckSignature(signature, timestamp, nonce, token, out ent))
