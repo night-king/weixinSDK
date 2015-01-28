@@ -40,7 +40,7 @@ namespace Deepleo.Weixin.SDK.JSSDK
         /// 创建随机字符串
         /// </summary>
         /// <returns></returns>
-        public static string CreatenNonce_str()
+        public static string CreateNonce_str()
         {
             Random r = new Random();
             var sb = new StringBuilder();

@@ -15,7 +15,7 @@ namespace Deepleo.Web.Controllers
         {
             ViewBag.Title = "JSSDK demo";
             var appId = WeixinConfig.AppID;
-            var nonceStr = JSAPI.CreatenNonce_str();
+            var nonceStr = JSAPI.CreateNonce_str();
             var timestamp = JSAPI.CreatenTimestamp();
             var domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
             var url = domain + Request.Url.PathAndQuery;
