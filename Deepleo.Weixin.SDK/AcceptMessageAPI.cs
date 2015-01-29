@@ -14,6 +14,7 @@ using System.Dynamic;
 using System.Xml.Linq;
 using System.Xml;
 using Codeplex.Data;
+using Tencent;
 
 namespace Deepleo.Weixin.SDK
 {

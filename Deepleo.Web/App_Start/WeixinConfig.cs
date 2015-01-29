@@ -15,6 +15,7 @@ namespace Deepleo.Web
         public static TokenHelper TokenHelper { private set; get; }
         public static void Register()
         {
+
             Token = System.Configuration.ConfigurationManager.AppSettings["Token"];
             EncodingAESKey = System.Configuration.ConfigurationManager.AppSettings["EncodingAESKey"];
             AppID = System.Configuration.ConfigurationManager.AppSettings["AppID"];

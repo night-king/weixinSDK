@@ -41,6 +41,11 @@ namespace Deepleo.Web
                     string userMessage = message.Body.Content.Value;
                     result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, "欢迎使用，您输入了：" + userMessage);
                     break;
+                case WeixinMessageType.Image:
+                    string imageUrl = message.Body.PicUrl.Value;//图片地址
+                    string mediaId = message.Body.MediaId.Value;//mediaId
+                    result = ReplayPassiveMessageAPI.ReplayImage(openId, myUserName, mediaId);
+                    break;
                 case WeixinMessageType.Event:
                     string eventType = message.Body.Event.Value.ToLower();
                     string eventKey = message.Body.EventKey.Value;
