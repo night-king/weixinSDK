@@ -119,9 +119,11 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Content\css\jssdk\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\ad.jpg" />
     <Content Include="Images\jssdk-demo.png" />
+    <Content Include="Scripts\jssdk\demo.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

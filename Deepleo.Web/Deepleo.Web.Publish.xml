@@ -2,43 +2,45 @@
 <publishData>
   <publishProfile publishUrl="C:\weixinsdk" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
     <file relUrl="bin/System.Web.Http.dll" publishTime="11/06/2014 12:46:47" />
+    <file relUrl="Scripts/jssdk/demo.js" publishTime="01/29/2015 12:00:28" />
+    <file relUrl="bin/System.Web.Helpers.dll" publishTime="11/06/2014 12:46:47" />
     <file relUrl="Global.asax" publishTime="11/06/2014 12:46:46" />
     <file relUrl="Views/_ViewStart.cshtml" publishTime="01/27/2015 13:38:25" />
     <file relUrl="bin/System.Net.Http.WebRequest.xml" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="Views/Shared/_Layout.cshtml" publishTime="01/27/2015 15:58:34" />
-    <file relUrl="bin/System.Web.Razor.dll" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="Images/ad.jpg" publishTime="11/06/2014 14:42:57" />
+    <file relUrl="bin/System.Web.WebPages.xml" publishTime="11/06/2014 12:46:47" />
+    <file relUrl="bin/Deepleo.Web.pdb" publishTime="01/29/2015 12:10:25" />
     <file relUrl="bin/System.Net.Http.dll" publishTime="11/06/2014 12:46:47" />
     <file relUrl="bin/System.Net.Http.Formatting.dll" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="bin/System.Web.WebPages.Razor.dll" publishTime="11/06/2014 12:46:47" />
+    <file relUrl="Content/css/jssdk/style.css" publishTime="01/29/2015 11:57:37" />
     <file relUrl="bin/Newtonsoft.Json.xml" publishTime="11/06/2014 12:46:48" />
     <file relUrl="Images/jssdk-demo.png" publishTime="01/27/2015 15:26:55" />
     <file relUrl="bin/System.Web.Mvc.xml" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="bin/Deepleo.Weixin.SDK.pdb" publishTime="01/27/2015 16:05:20" />
+    <file relUrl="bin/Deepleo.Weixin.SDK.pdb" publishTime="01/29/2015 12:10:24" />
     <file relUrl="bin/System.Web.WebPages.Deployment.xml" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="bin/Deepleo.Web.dll" publishTime="01/27/2015 16:05:23" />
-    <file relUrl="bin/System.Web.Helpers.dll" publishTime="11/06/2014 12:46:47" />
+    <file relUrl="bin/Deepleo.Web.dll" publishTime="01/29/2015 12:10:26" />
+    <file relUrl="bin/System.Web.WebPages.Razor.xml" publishTime="11/06/2014 12:46:47" />
     <file relUrl="bin/System.Web.WebPages.dll" publishTime="11/06/2014 12:46:47" />
     <file relUrl="packages.config" publishTime="11/06/2014 12:46:47" />
     <file relUrl="bin/System.Web.Http.xml" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="Views/Home/Index.cshtml" publishTime="01/27/2015 14:39:37" />
+    <file relUrl="Views/Home/Index.cshtml" publishTime="01/27/2015 16:11:43" />
     <file relUrl="bin/System.Web.Razor.xml" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="bin/System.Web.WebPages.xml" publishTime="11/06/2014 12:46:47" />
+    <file relUrl="Images/ad.jpg" publishTime="11/06/2014 14:42:57" />
     <file relUrl="bin/System.Web.Http.WebHost.xml" publishTime="11/06/2014 12:46:47" />
     <file relUrl="bin/Newtonsoft.Json.dll" publishTime="11/06/2014 12:46:48" />
-    <file relUrl="bin/System.Web.WebPages.Razor.xml" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="Views/JSSDK/Index.cshtml" publishTime="01/27/2015 16:03:54" />
-    <file relUrl="bin/System.Web.Mvc.dll" publishTime="11/06/2014 12:46:47" />
+    <file relUrl="bin/System.Web.Helpers.xml" publishTime="11/06/2014 12:46:47" />
+    <file relUrl="Views/JSSDK/Index.cshtml" publishTime="01/29/2015 12:10:03" />
+    <file relUrl="Views/Shared/_Layout.cshtml" publishTime="01/27/2015 15:58:34" />
     <file relUrl="bin/System.Net.Http.WebRequest.dll" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="bin/Deepleo.Web.pdb" publishTime="01/27/2015 16:05:23" />
+    <file relUrl="bin/System.Web.Razor.dll" publishTime="11/06/2014 12:46:47" />
     <file relUrl="bin/System.Web.WebPages.Deployment.dll" publishTime="11/06/2014 12:46:47" />
     <file relUrl="bin/System.Web.Http.WebHost.dll" publishTime="11/06/2014 12:46:47" />
     <file relUrl="bin/System.Net.Http.xml" publishTime="11/06/2014 12:46:47" />
     <file relUrl="bin/Microsoft.Web.Infrastructure.dll" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="Web.config" publishTime="01/27/2015 16:05:27" />
+    <file relUrl="Web.config" publishTime="01/29/2015 12:10:33" />
+    <file relUrl="bin/System.Web.Mvc.dll" publishTime="11/06/2014 12:46:47" />
     <file relUrl="bin/System.Net.Http.Formatting.xml" publishTime="11/06/2014 12:46:47" />
     <file relUrl="Views/Web.config" publishTime="01/27/2015 13:44:59" />
-    <file relUrl="bin/System.Web.Helpers.xml" publishTime="11/06/2014 12:46:47" />
-    <file relUrl="bin/Deepleo.Weixin.SDK.dll" publishTime="01/27/2015 16:05:20" />
+    <file relUrl="bin/System.Web.WebPages.Razor.dll" publishTime="11/06/2014 12:46:47" />
+    <file relUrl="bin/Deepleo.Weixin.SDK.dll" publishTime="01/29/2015 12:10:24" />
   </publishProfile>
 </publishData>
