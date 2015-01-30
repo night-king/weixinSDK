@@ -33,18 +33,18 @@ namespace Deepleo.Weixin.SDK
         {
             var builder = new StringBuilder();
             builder.Append("{")
-                .Append('"' + "touser" + '"' + ":").Append(touser).Append(",")
-                .Append('"' + "msgtype" + '"' + ":").Append("text").Append(",")
+                .Append('"' + "touser" + '"' + ":").Append('"' + touser + '"').Append(",")
+                .Append('"' + "msgtype" + '"' + ":").Append('"' + "text" + '"').Append(",")
                 .Append('"' + "text" + '"' + ":")
                 .Append("{")
-                .Append('"' + "content" + '"' + ":").Append(content)
+                .Append('"' + "content" + '"' + ":").Append("'" + content + "'")
                 .Append("}");
             if (!string.IsNullOrEmpty(kf_account))
             {
                 builder.Append(",");
                 builder.Append('"' + "customservice" + '"' + ":")
                        .Append("{")
-                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append('"' + "kfaccount" + '"' + ":").Append('"' + kf_account + '"')
                        .Append("}");
             }
             builder.Append("}");
@@ -64,18 +64,18 @@ namespace Deepleo.Weixin.SDK
         {
             var builder = new StringBuilder();
             builder.Append("{")
-                .Append('"' + "touser" + '"' + ":").Append(touser).Append(",")
-                .Append('"' + "msgtype" + '"' + ":").Append("image").Append(",")
+                .Append('"' + "touser" + '"' + ":").Append('"' + touser + '"').Append(",")
+                .Append('"' + "msgtype" + '"' + ":").Append('"' + "image" + '"').Append(",")
                 .Append('"' + "image" + '"' + ":")
                 .Append("{")
-                .Append('"' + "media_id" + '"' + ":").Append(media_id)
+                .Append('"' + "media_id" + '"' + ":").Append('"' + media_id + '"')
                 .Append("}");
             if (!string.IsNullOrEmpty(kf_account))
             {
                 builder.Append(",");
                 builder.Append('"' + "customservice" + '"' + ":")
                        .Append("{")
-                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append('"' + "kfaccount" + '"' + ":").Append('"' + kf_account + '"')
                        .Append("}");
             }
             builder.Append("}");
@@ -94,18 +94,18 @@ namespace Deepleo.Weixin.SDK
         {
             var builder = new StringBuilder();
             builder.Append("{")
-                .Append('"' + "touser" + '"' + ":").Append(touser).Append(",")
-                .Append('"' + "msgtype" + '"' + ":").Append("voice").Append(",")
+                .Append('"' + "touser" + '"' + ":").Append('"' + touser + '"').Append(",")
+                .Append('"' + "msgtype" + '"' + ":").Append('"' + "voice" + '"').Append(",")
                 .Append('"' + "voice" + '"' + ":")
                 .Append("{")
-                .Append('"' + "media_id" + '"' + ":").Append(media_id)
+                .Append('"' + "media_id" + '"' + ":").Append('"' + media_id + '"')
                 .Append("}");
             if (!string.IsNullOrEmpty(kf_account))
             {
                 builder.Append(",");
                 builder.Append('"' + "customservice" + '"' + ":")
                        .Append("{")
-                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append('"' + "kfaccount" + '"' + ":").Append('"' + kf_account + '"')
                        .Append("}");
             }
             builder.Append("}");
@@ -127,21 +127,21 @@ namespace Deepleo.Weixin.SDK
         {
             var builder = new StringBuilder();
             builder.Append("{")
-                .Append('"' + "touser" + '"' + ":").Append(touser).Append(",")
-                .Append('"' + "msgtype" + '"' + ":").Append("video").Append(",")
+                .Append('"' + "touser" + '"' + ":").Append('"' + touser + '"').Append(",")
+                .Append('"' + "msgtype" + '"' + ":").Append('"' + "video" + '"').Append(",")
                 .Append('"' + "video" + '"' + ":")
                 .Append("{")
-                .Append('"' + "media_id" + '"' + ":").Append(media_id).Append(",")
-                .Append('"' + "thumb_media_id" + '"' + ":").Append(thumb_media_id).Append(",")
-                .Append('"' + "title" + '"' + ":").Append(title).Append(",")
-                .Append('"' + "description" + '"' + ":").Append(description)
+                .Append('"' + "media_id" + '"' + ":").Append('"' + media_id + '"').Append(",")
+                .Append('"' + "thumb_media_id" + '"' + ":").Append('"' + thumb_media_id + '"').Append(",")
+                .Append('"' + "title" + '"' + ":").Append('"' + title + '"').Append(",")
+                .Append('"' + "description" + '"' + ":").Append('"' + description + '"')
                 .Append("}");
             if (!string.IsNullOrEmpty(kf_account))
             {
                 builder.Append(",");
                 builder.Append('"' + "customservice" + '"' + ":")
                        .Append("{")
-                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append('"' + "kfaccount" + '"' + ":").Append('"' + kf_account + '"')
                        .Append("}");
             }
             builder.Append("}");
@@ -165,22 +165,22 @@ namespace Deepleo.Weixin.SDK
         {
             var builder = new StringBuilder();
             builder.Append("{")
-                .Append('"' + "touser" + '"' + ":").Append(touser).Append(",")
-                .Append('"' + "msgtype" + '"' + ":").Append("music").Append(",")
+                .Append('"' + "touser" + '"' + ":").Append('"' + touser + '"').Append(",")
+                .Append('"' + "msgtype" + '"' + ":").Append('"' + "music" + '"').Append(",")
                 .Append('"' + "music" + '"' + ":")
                 .Append("{")
-                .Append('"' + "title" + '"' + ":").Append(title).Append(",")
-                .Append('"' + "description" + '"' + ":").Append(description).Append(",")
-                .Append('"' + "musicurl" + '"' + ":").Append(musicurl).Append(",")
-                .Append('"' + "hqmusicurl" + '"' + ":").Append(hqmusicurl).Append(",")
-                .Append('"' + "thumb_media_id" + '"' + ":").Append(thumb_media_id).Append(",")
+                .Append('"' + "title" + '"' + ":").Append('"' + title + '"').Append(",")
+                .Append('"' + "description" + '"' + ":").Append('"' + description + '"').Append(",")
+                .Append('"' + "musicurl" + '"' + ":").Append('"' + musicurl + '"').Append(",")
+                .Append('"' + "hqmusicurl" + '"' + ":").Append('"' + hqmusicurl + '"').Append(",")
+                .Append('"' + "thumb_media_id" + '"' + ":").Append('"' + thumb_media_id + '"').Append(",")
                 .Append("}");
             if (!string.IsNullOrEmpty(kf_account))
             {
                 builder.Append(",");
                 builder.Append('"' + "customservice" + '"' + ":")
                        .Append("{")
-                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append('"' + "kfaccount" + '"' + ":").Append('"' + kf_account + '"')
                        .Append("}");
             }
             builder.Append("}");
@@ -199,17 +199,17 @@ namespace Deepleo.Weixin.SDK
         {
             var builder = new StringBuilder();
             builder.Append("{")
-                .Append('"' + "touser" + '"' + ":").Append(touser).Append(",")
-                .Append('"' + "msgtype" + '"' + ":").Append("news").Append(",")
+                .Append('"' + "touser" + '"' + ":").Append('"' + touser + '"').Append(",")
+                .Append('"' + "msgtype" + '"' + ":").Append('"' + "news" + '"').Append(",")
                 .Append('"' + "news" + '"' + ":")
                 .Append("{")
                    .Append('"' + "articles" + '"' + ":")
                      .Append("[")
                      .Append("{")
-                     .Append('"' + "title" + '"' + ":").Append(news.title).Append(",")
-                     .Append('"' + "description" + '"' + ":").Append(news.description).Append(",")
-                     .Append('"' + "url" + '"' + ":").Append(news.url).Append(",")
-                     .Append('"' + "picurl" + '"' + ":").Append(news.picurl)
+                     .Append('"' + "title" + '"' + ":").Append('"' + news.title + '"').Append(",")
+                     .Append('"' + "description" + '"' + ":").Append('"' + news.description + '"').Append(",")
+                     .Append('"' + "url" + '"' + ":").Append('"' + news.url + '"').Append(",")
+                     .Append('"' + "picurl" + '"' + ":").Append('"' + news.picurl + '"')
                      .Append("}")
                    .Append("]")
                 .Append("}");
@@ -218,7 +218,7 @@ namespace Deepleo.Weixin.SDK
                 builder.Append(",");
                 builder.Append('"' + "customservice" + '"' + ":")
                        .Append("{")
-                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append('"' + "kfaccount" + '"' + ":").Append('"' + kf_account + '"')
                        .Append("}");
             }
             builder.Append("}");
@@ -238,18 +238,18 @@ namespace Deepleo.Weixin.SDK
         {
             var builder = new StringBuilder();
             builder.Append("{")
-                .Append('"' + "touser" + '"' + ":").Append(touser).Append(",")
-                .Append('"' + "msgtype" + '"' + ":").Append("news").Append(",")
+                .Append('"' + "touser" + '"' + ":").Append('"' + touser + '"').Append(",")
+                .Append('"' + "msgtype" + '"' + ":").Append('"' + "news" + '"').Append(",")
                 .Append('"' + "news" + '"' + ":")
                 .Append("{").Append('"' + "articles" + '"' + ":").Append("[");
             for (int i = 0; i < news.Count; i++)
             {
                 var n = news[i];
                 builder.Append("{")
-                       .Append('"' + "title" + '"' + ":").Append(n.title).Append(",")
-                       .Append('"' + "description" + '"' + ":").Append(n.description).Append(",")
-                       .Append('"' + "url" + '"' + ":").Append(n.url).Append(",")
-                       .Append('"' + "picurl" + '"' + ":").Append(n.picurl)
+                       .Append('"' + "title" + '"' + ":").Append('"' + n.title + '"').Append(",")
+                       .Append('"' + "description" + '"' + ":").Append('"' + n.description + '"').Append(",")
+                       .Append('"' + "url" + '"' + ":").Append('"' + n.url + '"').Append(",")
+                       .Append('"' + "picurl" + '"' + ":").Append('"' + n.picurl + '"')
                        .Append("}");
                 if (i != news.Count - 1) builder.Append(",");
             }
@@ -260,7 +260,7 @@ namespace Deepleo.Weixin.SDK
                 builder.Append(",");
                 builder.Append('"' + "customservice" + '"' + ":")
                        .Append("{")
-                       .Append('"' + "kfaccount" + '"' + ":").Append(kf_account)
+                       .Append('"' + "kfaccount" + '"' + ":").Append('"' + kf_account + '"')
                        .Append("}");
             }
             builder.Append("}");
