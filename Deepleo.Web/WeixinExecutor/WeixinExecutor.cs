@@ -38,14 +38,61 @@ namespace Deepleo.Web
             //这里需要调用TokenHelper获取Token的，省略了。
             switch (message.Type)
             {
-                case WeixinMessageType.Text:
+                case WeixinMessageType.Text://文字消息
                     string userMessage = message.Body.Content.Value;
                     result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, "欢迎使用，您输入了：" + userMessage);
                     break;
-                case WeixinMessageType.Image:
+                case WeixinMessageType.Image://图片消息
                     string imageUrl = message.Body.PicUrl.Value;//图片地址
                     string mediaId = message.Body.MediaId.Value;//mediaId
                     result = ReplayPassiveMessageAPI.ReplayImage(openId, myUserName, mediaId);
+                    break;
+
+                case WeixinMessageType.Video://视频消息
+                    #region 视频消息
+                    {
+                        var media_id = message.Body.MediaId.Value.ToString();
+                        var thumb_media_id = message.Body.ThumbMediaId.Value.ToString();
+                        var msgId = message.Body.MsgId.Value.ToString();
+                        //TODO
+                        result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("视频消息:openid:{0},media_id:{1},thumb_media_id:{2},msgId:{3}", openId, media_id, thumb_media_id, msgId));
+                    }
+                    #endregion
+                    break;
+                case WeixinMessageType.Voice://语音消息
+                    #region 语音消息
+                    {
+                        var media_id = message.Body.MediaId.Value.ToString();
+                        var format = message.Body.Format.Value.ToString();
+                        var msgId = message.Body.MsgId.Value.ToString();
+                        //TODO
+                        result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("语音消息:openid:{0},media_id:{1},format:{2},msgId:{3}", openId, media_id, format, msgId));
+                    }
+                    #endregion
+                    break;
+                case WeixinMessageType.Location://地理位置消息
+                    #region 地理位置消息
+                    {
+                        var location_X = message.Body.Location_X.Value.ToString();
+                        var location_Y = message.Body.Location_Y.Value.ToString();
+                        var scale = message.Body.Scale.Value.ToString();
+                        var Label = message.Body.Label.Value.ToString();
+                        //TODO
+                        result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("地理位置消息: openid:{0},Location_X:{1},Location_Y:{2},Scale:{3},label:{4}", openId, location_X, location_Y, scale, Label));
+                    }
+                    #endregion
+                    break;
+                case WeixinMessageType.Link://链接消息
+                    #region 链接消息
+                    {
+                        var title = message.Body.Title.Value.ToString();
+                        var description = message.Body.Description.Value.ToString();
+                        var url = message.Body.Url.Value.ToString();
+                        var msgId = message.Body.MsgId.Value.ToString();
+                        //TODO
+                        result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("openid:{0},title:{1},description:{2},url:{3},msgId:{4}", openId, title, description, url, msgId));
+                    }
+                    #endregion
                     break;
                 case WeixinMessageType.Event:
                     string eventType = message.Body.Event.Value.ToLower();
