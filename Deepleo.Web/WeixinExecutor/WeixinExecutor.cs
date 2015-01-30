@@ -14,6 +14,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Deepleo.Weixin.SDK.Helpers;
 using Deepleo.Weixin.SDK.Entities;
+using Deepleo.Web.Services;
 
 namespace Deepleo.Web
 {
@@ -48,7 +49,12 @@ namespace Deepleo.Web
                     break;
                 case WeixinMessageType.Event:
                     string eventType = message.Body.Event.Value.ToLower();
-                    string eventKey = message.Body.EventKey.Value;
+                    string eventKey = string.Empty;
+                    try
+                    {
+                        eventKey = message.Body.EventKey.Value;
+                    }
+                    catch { }
                     switch (eventType)
                     {
                         case "subscribe"://用户未关注时，进行关注后的事件推送
@@ -62,6 +68,7 @@ namespace Deepleo.Web
                             {
                                 result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, "欢迎订阅");
                             }
+
                             #endregion
                             break;
                         case "unsubscribe"://取消关注
@@ -82,7 +89,8 @@ namespace Deepleo.Web
                             }
                             #endregion
                             break;
-                        case "MASSSENDJOBFINISH"://事件推送群发结果,
+                        case "masssendjobfinish"://事件推送群发结果,
+                            #region 事件推送群发结果
                             {
                                 var msgId = message.Body.MsgID;
                                 var msgStatus = message.Body.Status;//“send success”或“send fail”或“err(num)” 
@@ -93,24 +101,28 @@ namespace Deepleo.Web
                                 var filterCount = message.Body.FilterCount;//过滤（过滤是指特定地区、性别的过滤、用户设置拒收的过滤，用户接收已超4条的过滤）后，准备发送的粉丝数，原则上，FilterCount = SentCount + ErrorCount
                                 var sentCount = message.Body.SentCount;//发送成功的粉丝数
                                 var errorCount = message.Body.FilterCount;//发送失败的粉丝数
-                                //TODO:开发者自己的处理逻辑
-
+                                //TODO:开发者自己的处理逻辑,这里用log4net记录日志
+                                LogWriter.Default.WriteInfo(string.Format("mass send job finishe,msgId:{0},msgStatus:{1},totalCount:{2},filterCount:{3},sentCount:{4},errorCount:{5}", msgId, msgStatus, totalCount, filterCount, sentCount, errorCount));
                             }
+                            #endregion
                             break;
-                        case "TEMPLATESENDJOBFINISH"://模版消息结果,
+                        case "templatesendjobfinish"://模版消息结果,
+                            #region 模版消息结果
                             {
                                 var msgId = message.Body.MsgID;
                                 var msgStatus = message.Body.Status;//发送状态为成功: success; 用户拒绝接收:failed:user block; 发送状态为发送失败（非用户拒绝）:failed: system failed
-
+                                //TODO:开发者自己的处理逻辑,这里用log4net记录日志
+                                LogWriter.Default.WriteInfo(string.Format("template send job finish,msgId:{0},msgStatus:{1}", msgId, msgStatus));
                             }
+                            #endregion
                             break;
-
                         case "location"://上报地理位置事件
                             #region 上报地理位置事件
                             var lat = message.Body.Latitude.Value.ToString();
                             var lng = message.Body.Longitude.Value.ToString();
                             var pcn = message.Body.Precision.Value.ToString();
-                            //TODO:在此处将经纬度记录在数据库
+                            //TODO:在此处将经纬度记录在数据库,这里用log4net记录日志
+                            LogWriter.Default.WriteInfo(string.Format("openid:{0} ,location,lat:{1},lng:{21},pcn:{3}", openId, lat, lng, pcn));
                             #endregion
                             break;
                         case "voice"://语音消息
@@ -139,11 +151,12 @@ namespace Deepleo.Web
                             break;
                         case "click"://自定义菜单事件
                             #region 自定义菜单事件
-                            switch (eventKey)
                             {
-                                case "myaccount"://CLICK类型事件举例
-                                    #region 我的账户
-                                    result = ReplayPassiveMessageAPI.RepayNews(openId, myUserName, new List<WeixinNews>()
+                                switch (eventKey)
+                                {
+                                    case "myaccount"://CLICK类型事件举例
+                                        #region 我的账户
+                                        result = ReplayPassiveMessageAPI.RepayNews(openId, myUserName, new List<WeixinNews>()
                                     {
                                         new WeixinNews{
                                             title="我的帐户",
@@ -152,16 +165,67 @@ namespace Deepleo.Web
                                             picurl=string.Format("{0}/Images/ad.jpg",domain)
                                         },
                                     });
-                                    #endregion
-                                    break;
-                                case "www.weixinsdk.net"://VIEW类型事件举例，注意：点击菜单弹出子菜单，不会产生上报。
-                                    //TODO:后台处理逻辑
-                                    break;
-                                default:
-                                    result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, "没有响应菜单事件");
-                                    break;
+                                        #endregion
+                                        break;
+                                    case "www.weixinsdk.net"://VIEW类型事件举例，注意：点击菜单弹出子菜单，不会产生上报。
+                                        //TODO:后台处理逻辑
+                                        break;
+                                    default:
+                                        result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, "没有响应菜单事件");
+                                        break;
+                                }
                             }
                             #endregion
+                            break;
+                        case "view"://点击菜单跳转链接时的事件推送
+                            #region 点击菜单跳转链接时的事件推送
+                            result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("您将跳转至：{0}", eventKey));
+                            #endregion
+                            break;
+                        case "scancode_push"://扫码推事件的事件推送
+                            {
+                                var scanType = message.Body.ScanCodeInfo.ScanType;//扫描类型，一般是qrcode
+                                var scanResult = message.Body.ScanCodeInfo.ScanResult;//扫描结果，即二维码对应的字符串信息
+                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("您扫描了二维码,scanType：{0},scanResult:{1},EventKey:{2}", scanType, scanResult, eventKey));
+                            }
+                            break;
+                        case "scancode_waitmsg"://扫码推事件且弹出“消息接收中”提示框的事件推送
+                            {
+                                var scanType = message.Body.ScanCodeInfo.ScanType;//扫描类型，一般是qrcode
+                                var scanResult = message.Body.ScanCodeInfo.ScanResult;//扫描结果，即二维码对应的字符串信息
+                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("您扫描了二维码,scanType：{0},scanResult:{1},EventKey:{2}", scanType, scanResult, eventKey));
+                            }
+                            break;
+                        case "pic_sysphoto"://弹出系统拍照发图的事件推送
+                            {
+                                var count = message.Body.SendPicsInfo.Count;//发送的图片数量
+                                var picList = message.Body.PicList;//发送的图片信息
+                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("弹出系统拍照发图,count：{0},EventKey:{1}", count, eventKey));
+                            }
+                            break;
+                        case "pic_photo_or_album"://弹出拍照或者相册发图的事件推送
+                            {
+                                var count = message.Body.SendPicsInfo.Count;//发送的图片数量
+                                var picList = message.Body.PicList;//发送的图片信息
+                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("弹出拍照或者相册发图,count：{0},EventKey:{1}", count, eventKey));
+                            }
+                            break;
+                        case "pic_weixin"://弹出微信相册发图器的事件推送
+                            {
+                                var count = message.Body.SendPicsInfo.Count;//发送的图片数量
+                                var picList = message.Body.PicList;//发送的图片信息
+                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("弹出微信相册发图器,count：{0},EventKey:{1}", count, eventKey));
+                            }
+                            break;
+                        case "location_select"://弹出地理位置选择器的事件推送
+                            {
+                                var location_X = message.Body.SendLocationInfo.Location_X;//X坐标信息
+                                var location_Y = message.Body.SendLocationInfo.Location_Y;//Y坐标信息
+                                var scale = message.Body.SendLocationInfo.Scale;//精度，可理解为精度或者比例尺、越精细的话 scale越高
+                                var label = message.Body.SendLocationInfo.Label;//地理位置的字符串信息
+                                var poiname = message.Body.SendLocationInfo.Poiname;//朋友圈POI的名字，可能为空  
+                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("弹出地理位置选择器,location_X：{0},location_Y:{1},scale:{2},label:{3},poiname:{4},eventKey:{5}", location_X, location_Y, scale, label, poiname, eventKey));
+                            }
                             break;
                     }
                     break;
