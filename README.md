@@ -66,7 +66,9 @@
 
 微信支付、微信小店接口、微信卡券、设备功能接口暂未开发。
 
-demo：Deepleo.Web，demo演示请关注微信公众好号：
+demo：Deepleo.Web项目，请编译后发布到服务器，并修改web.config(appid,appsecrect,Token,EncodingAESKey)，在后台将服务地址改为：[域名]/weixin。
+
+demo在线演示请关注微信公众号：
 (1) 鸣创软件(JS-SDK，订阅号所有可以实现的功能演示) 
 (2) 慢做菜(基于WeixinSDK实现的菜谱查询服务)
 
