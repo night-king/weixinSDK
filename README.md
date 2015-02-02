@@ -67,7 +67,7 @@
 微信支付、微信小店接口、微信卡券、设备功能接口暂未开发。
 
 5.demo
- Deepleo.Web项目，请编译后发布到服务器，并修改web.config(appid,appsecrect,Token,EncodingAESKey)，在后台将服务地址改为：[域名]/weixin。demo在线演示请关注微信公众号：
+ Deepleo.Web项目，请编译后发布到服务器，并修改web.config(appid,appsecrect,Token,EncodingAESKey)， 在后台将服务地址改为：[域名]/weixin。demo在线演示请关注微信公众号：
 
 (1) 鸣创软件(订阅号所有可以实现的功能演示) 
 
@@ -108,5 +108,5 @@ Code and documentation copyright 2011-2015. Code released under the MIT license.
 
 11.郑重申明
 
-本SDK不收费，坚持开源，没有未公开的api，项目中的代码是我自己开发过的项目积累。如果在使用中遇到什么问题，请到官方QQ群或者论坛中提问，直接加我私人QQ提问的概不做答。如果发现bug，请到https://github.com/night-king/weixinSDK/issues提出，我会尽快解决，并发布论坛QQ群群邮件、论坛bug栏目、以及QQ群通知。
+本SDK不收费，坚持开源，没有未公开的api，项目中的代码是我自己开发过的项目积累。如果在使用中遇到什么问题，请到官方QQ群或者论坛中提问，直接加我私人QQ提问的概不做答。如果发现bug，请到https://github.com/night-king/weixinSDK/issues 提出，我会尽快解决，并发布论坛QQ群群邮件、论坛bug栏目、以及QQ群通知。
 
