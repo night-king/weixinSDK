@@ -49,6 +49,10 @@ namespace Deepleo.Weixin.SDK.Helpers
             _timer.Elapsed += delegate
             {
                 refreshToken();
+                if (IsOpenJSTickect)
+                {
+                    refreshJSTickect();
+                }
             };
             _timer.Start();
         }
