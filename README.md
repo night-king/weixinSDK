@@ -69,9 +69,11 @@
 5.demo
  Deepleo.Web项目，请编译后发布到服务器，并修改web.config(appid,appsecrect,Token,EncodingAESKey)， 在后台将服务地址改为：[域名]/weixin。demo在线演示请关注微信公众号：
 
-(1) 鸣创软件(订阅号所有可以实现的功能演示) 
+(1) 鸣创软件(订阅号所有可以实现的功能演示,)
+<img src="http://weixinsdk.net/data/attachment/forum/201502/02/102815etfqqqfvj9tdtjz4.jpg" style="width:100px; height:100px;"/>
 
 (2) 慢做菜(基于WeixinSDK实现的菜谱查询服务)
+<img src="http://weixinsdk.net/data/attachment/forum/201502/02/102818c29jxbepe2nbjm2n.jpg" style="width:100px; height:100px;"/>
 
 (3) http://weixinsdk.deepleo.com/jssdk (js-sdk演示,需要在微信中打开， 由于本公众号只是未认证订阅号，故请对照后台权限测试)
 
