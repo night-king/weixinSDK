@@ -66,14 +66,17 @@
 
 微信支付、微信小店接口、微信卡券、设备功能接口暂未开发。
 
-demo：Deepleo.Web项目，请编译后发布到服务器，并修改web.config(appid,appsecrect,Token,EncodingAESKey)，在后台将服务地址改为：[域名]/weixin。
+5.demo
+ Deepleo.Web项目，请编译后发布到服务器，并修改web.config(appid,appsecrect,Token,EncodingAESKey)，在后台将服务地址改为：[域名]/weixin。demo在线演示请关注微信公众号：
 
-demo在线演示请关注微信公众号：
 (1) 鸣创软件(订阅号所有可以实现的功能演示) 
+
 (2) 慢做菜(基于WeixinSDK实现的菜谱查询服务)
+
 (3) http://weixinsdk.deepleo.com/jssdk (js-sdk演示,需要在微信中打开， 由于本公众号只是未认证订阅号，故请对照后台权限测试)
 
-5.问题帮助
+
+6.问题帮助
 
 如果开发者遇到开发问题或者遇到SDK的bug，请到
 
@@ -83,7 +86,7 @@ demo在线演示请关注微信公众号：
 
 3）作者QQ：2586662969
 
-6.注意事项
+7.注意事项
 
 1）由于本SDK只是简单包装了官方API，API调用有诸多限制（譬如权限限制，次数限制），所以开发者还是需要仔细阅读官方文档。
 
@@ -94,11 +97,16 @@ demo在线演示请关注微信公众号：
 4）微信自带开发者问答系统，上面都是前车之鉴，有一定参考价值。
 
 
-7.源代码托管：https://github.com/night-king/weixinSDK
+8.源代码托管：https://github.com/night-king/weixinSDK
 
 
-8.Copyright and license
+9.Copyright and license
 
 Code and documentation copyright 2011-2015. Code released under the MIT license. Docs released under Creative Commons.
 
-9.建议加入官方QQ群第一时间获取API更新的最新动态：173564082
+10.建议加入官方QQ群第一时间获取API更新的最新动态：173564082
+
+11.郑重申明
+
+本SDK不收费，坚持开源，没有未公开的api，项目中的代码是我自己开发过的项目积累。如果在使用中遇到什么问题，请到官方QQ群或者论坛中提问，直接加我私人QQ提问的概不做答。如果发现bug，请到https://github.com/night-king/weixinSDK/issues提出，我会尽快解决，并发布论坛QQ群群邮件、论坛bug栏目、以及QQ群通知。
+
