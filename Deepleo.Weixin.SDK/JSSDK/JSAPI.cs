@@ -31,35 +31,7 @@ namespace Deepleo.Weixin.SDK.JSSDK
             var jsTicket = DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
             return jsTicket;
         }
-        private static string[] strs = new string[]
-                                 {
-                                  "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
-                                  "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"
-                                 };
-        /// <summary>
-        /// 创建随机字符串
-        /// </summary>
-        /// <returns></returns>
-        public static string CreateNonce_str()
-        {
-            Random r = new Random();
-            var sb = new StringBuilder();
-            var length = strs.Length;
-            for (int i = 0; i < 15; i++)
-            {
-                sb.Append(strs[r.Next(length - 1)]);
-            }
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// 创建时间戳
-        /// </summary>
-        /// <returns></returns>
-        public static long CreatenTimestamp()
-        {
-            return (DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000000;
-        }
+       
 
         /// <summary>
         /// 签名算法

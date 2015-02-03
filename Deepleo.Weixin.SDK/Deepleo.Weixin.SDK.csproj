@@ -39,6 +39,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +60,7 @@
     <Compile Include="JSSDK\JSAPI.cs" />
     <Compile Include="MessageStatisticsAPI.cs" />
     <Compile Include="NewsStatisticsAPI.cs" />
+    <Compile Include="Pay\WxPayAPI.cs" />
     <Compile Include="ServiceAdminAPI.cs" />
     <Compile Include="CustomMenuAPI.cs" />
     <Compile Include="Entities\WeixinArtcle.cs" />
@@ -81,6 +83,7 @@
   <ItemGroup>
     <Content Include="Cryptography\Readme.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

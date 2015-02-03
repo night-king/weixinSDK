@@ -110,6 +110,7 @@
     <Compile Include="App_Start\WeixinConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JSSDKController.cs" />
+    <Compile Include="Controllers\WXPayController.cs" />
     <Compile Include="Controllers\WeixinController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -163,6 +164,9 @@
       <Project>{E7421A8D-6149-402A-82F8-F6D7728CEED1}</Project>
       <Name>Deepleo.Weixin.SDK</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\JSSDK\Pay.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
