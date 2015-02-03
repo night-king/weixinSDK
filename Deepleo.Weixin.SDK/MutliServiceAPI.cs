@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Net.Http;
 using Codeplex.Data;
+using Deepleo.Weixin.SDK.Helpers;
 
 namespace Deepleo.Weixin.SDK
 {
@@ -39,7 +40,7 @@ namespace Deepleo.Weixin.SDK
            "<FromUserName><![CDATA[{1}]]></FromUserName>" +
            "<CreateTime>{2}</CreateTime>" +
            "<MsgType><![CDATA[transfer_customer_service]]></MsgType>" +
-           "</xml>", toUserName, DateTime.Now.ToBinary(), fromUserName);
+           "</xml>", toUserName, Util.CreateTimestamp(), fromUserName);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace Deepleo.Weixin.SDK
            "<CreateTime>{2}</CreateTime>" +
            "<MsgType><![CDATA[transfer_customer_service]]></MsgType>" +
            "<TransInfo><KfAccount><![CDATA[{3}]]></KfAccount></TransInfo>" +
-           "</xml>", toUserName, DateTime.Now.ToBinary(), fromUserName, kfAccount);
+           "</xml>", toUserName, Util.CreateTimestamp(), fromUserName, kfAccount);
         }
 
         /// <summary>

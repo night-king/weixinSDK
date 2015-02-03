@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Deepleo.Weixin.SDK.Entities;
+using Deepleo.Weixin.SDK.Helpers;
 
 namespace Deepleo.Weixin.SDK
 {
@@ -38,7 +39,7 @@ namespace Deepleo.Weixin.SDK
                                                    "<CreateTime>{2}</CreateTime>" +
                                                    "<MsgType><![CDATA[text]]></MsgType>" +
                                                    "<Content><![CDATA[{3}]]></Content></xml>",
-                                                   toUserName, fromUserName, DateTime.Now.ToBinary(), content);
+                                                   toUserName, fromUserName, Util.CreateTimestamp(), content);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace Deepleo.Weixin.SDK
             "<MsgType><![CDATA[news]]></MsgType>" +
             "<ArticleCount>{3}</ArticleCount><Articles>",
              toUserName, fromUserName,
-             DateTime.Now.ToBinary(),
+             Util.CreateTimestamp(),
             1));
             builder.Append(string.Format("<item><Title><![CDATA[{0}]]></Title>" +
                 "<Description><![CDATA[{1}]]></Description>" +
@@ -86,7 +87,7 @@ namespace Deepleo.Weixin.SDK
             "<MsgType><![CDATA[news]]></MsgType>" +
             "<ArticleCount>{3}</ArticleCount><Articles>",
              toUserName, fromUserName,
-             DateTime.Now.ToBinary(),
+             Util.CreateTimestamp(),
              news.Count
                 ));
             foreach (var c in news)
@@ -116,7 +117,7 @@ namespace Deepleo.Weixin.SDK
                                                    "<CreateTime>{2}</CreateTime>" +
                                                    "<MsgType><![CDATA[image]]></MsgType>" +
                                                    "<Image><MediaId><![CDATA[{3}]]></MediaId></Image></xml>",
-                                                   toUserName, fromUserName, DateTime.Now.ToBinary(), media_id);
+                                                   toUserName, fromUserName, Util.CreateTimestamp(), media_id);
         }
         /// <summary>
         /// 回复语音消息
@@ -132,7 +133,7 @@ namespace Deepleo.Weixin.SDK
                                                    "<CreateTime>{2}</CreateTime>" +
                                                    "<MsgType><![CDATA[voice]]></MsgType>" +
                                                    "<Voice><MediaId><![CDATA[{3}]]></MediaId></Voice></xml>",
-                                                   toUserName, fromUserName, DateTime.Now.ToBinary(), media_id);
+                                                   toUserName, fromUserName, Util.CreateTimestamp(), media_id);
         }
         /// <summary>
         /// 回复视频消息
@@ -152,7 +153,7 @@ namespace Deepleo.Weixin.SDK
                                                    "<Video><MediaId><![CDATA[{3}]]></MediaId>" +
                                                    "<Title><![CDATA[{4}]]></Title>" +
                                                    "<Description><![CDATA[{5}]]></Description></Video></xml>",
-                                                   toUserName, fromUserName, DateTime.Now.ToBinary(), media_id, title, description);
+                                                   toUserName, fromUserName, Util.CreateTimestamp(), media_id, title, description);
         }
 
         /// <summary>
@@ -179,7 +180,7 @@ namespace Deepleo.Weixin.SDK
                                                    "<HQMusicUrl><![CDATA[{6}]]></HQMusicUrl>" +
                                                    "<ThumbMediaId><![CDATA[{7}]]></ThumbMediaId>" +
                                                    "</Music></xml>",
-                                                   toUserName, fromUserName, DateTime.Now.ToBinary(), title, description, musicUrl, hqMusicUrl, thumb_media_id);
+                                                   toUserName, fromUserName, Util.CreateTimestamp(), title, description, musicUrl, hqMusicUrl, thumb_media_id);
         }
     }
 }

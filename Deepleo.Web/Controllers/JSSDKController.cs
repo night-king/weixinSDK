@@ -15,7 +15,7 @@ namespace Deepleo.Web.Controllers
         {
             var appId = WeixinConfig.AppID;
             var nonceStr = Util.CreateNonce_str();
-            var timestamp = Util.CreatenTimestamp();
+            var timestamp = Util.CreateTimestamp();
             var domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
             var url = domain + Request.Url.PathAndQuery;
             var jsTickect = WeixinConfig.TokenHelper.GetJSTickect();
@@ -39,7 +39,7 @@ namespace Deepleo.Web.Controllers
         {
             var appId = WeixinConfig.AppID;
             var nonceStr = Util.CreateNonce_str();
-            var timestamp = Util.CreatenTimestamp();
+            var timestamp = Util.CreateTimestamp();
             var domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
             var url = domain + Request.Url.PathAndQuery;
             var jsTickect = WeixinConfig.TokenHelper.GetJSTickect();
