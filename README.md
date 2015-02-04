@@ -157,3 +157,9 @@ Code and documentation copyright 2011-2015. Code released under the MIT license.
 
 本SDK不收费，坚持开源，没有未公开的api，项目中的代码是我自己开发过的项目积累。如果在使用中遇到什么问题，请到官方QQ群或者论坛中提问，直接加我私人QQ提问的概不做答。如果发现bug，请到https://github.com/night-king/weixinSDK/issues 提出，我会尽快解决，并发布论坛QQ群群邮件、论坛bug栏目、以及QQ群通知。
 
+12.捐助
+
+如果这个项目对您有用，我们欢迎各方任何形式的捐助，也包括参与到项目代码更新或意见反馈中来。谢谢！资金捐助：
+
+  <img src="http://weixinsdk.net/data/attachment/forum/201502/04/121113seaozjafla6a8qaa.jpg" style="width:100px; height:100px;"/>
+
