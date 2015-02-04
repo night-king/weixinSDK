@@ -117,7 +117,7 @@ Deepleo.Web/Views/JSSDK/Pay.cshtml
 
 2) demo项目发布之前如何配置？
 
-    答：需要修改web.config里appSettings节点下关于网站配置和微信相关配置，如果不需要的功能不用填写，譬如微信支付的相关配置。
+    答：需要修改web.config里appSettings节点下关于网站配置和微信相关配置，如果不需要的功能不用填写。
    
         读取这些配置的类在App_start/WeixinConfig.cs中，您可以根据自己的业务逻辑更改实现方式。
        
