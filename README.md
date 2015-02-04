@@ -95,13 +95,43 @@ Deepleo.Web/Views/JSSDK/Pay.cshtml
 
 6.问题帮助
 
-如果开发者遇到开发问题或者遇到SDK的bug，请到
+1）API返回的Dynamic对象应该如何使用？
 
-1）官方QQ群：173564082 
+    答：如果您调用API，return的是
+   
+    a.由DynamicJson.Parse转换而来，您可以用.[属性名称] 访问到该属性的值；
+   
+    譬如 BasicAPI.cs中GetAccessToken：
+   
+    var token = DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+   
+    那么调用时：string newToken = BasicAPI.GetAccessToken(AppId, AppSecrect).access_token;
+   
+    b.如果是DynamicXml转换而来的，您可以用.[属性名称].Value 访问到该属性的值；
+   
+    譬如 AcceptMessageAPI.cs中Parse:
+   
+    msg.Body = new DynamicXml(message);
+   
+    string msgType = msg.Body.MsgType.Value;
 
-2）论坛：http://www.weixinsdk.net/
+2) demo项目发布之前如何配置？
 
-3）作者QQ：2586662969
+    答：需要修改web.config里appSettings节点下关于网站配置和微信相关配置，如果不需要的功能不用填写，譬如微信支付的相关配置。
+   
+        读取这些配置的类在App_start/WeixinConfig.cs中，您可以根据自己的业务逻辑更改实现方式。
+       
+        譬如，如果您一个网站需要管理多个微信公众号的情况。
+
+3）遇到其他问题该如何解决?
+
+    答：如果开发者遇到开发问题或者遇到SDK的bug，请到
+
+     a.官方QQ群：173564082 
+
+     b.论坛：http://www.weixinsdk.net/
+
+     c.作者QQ：2586662969
 
 7.注意事项
 
