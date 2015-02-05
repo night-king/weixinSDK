@@ -144,15 +144,15 @@ namespace Deepleo.Web
                         case "masssendjobfinish"://事件推送群发结果,
                             #region 事件推送群发结果
                             {
-                                var msgId = message.Body.MsgID;
-                                var msgStatus = message.Body.Status;//“send success”或“send fail”或“err(num)” 
+                                var msgId = message.Body.MsgID.Value;
+                                var msgStatus = message.Body.Status.Value;//“send success”或“send fail”或“err(num)” 
                                 //send success时，也有可能因用户拒收公众号的消息、系统错误等原因造成少量用户接收失败。
                                 //err(num)是审核失败的具体原因，可能的情况如下：err(10001)涉嫌广告, err(20001)涉嫌政治, err(20004)涉嫌社会, err(20002)涉嫌色情, err(20006)涉嫌违法犯罪,
                                 //err(20008)涉嫌欺诈, err(20013)涉嫌版权, err(22000)涉嫌互推(互相宣传), err(21000)涉嫌其他
-                                var totalCount = message.Body.TotalCount;//group_id下粉丝数；或者openid_list中的粉丝数
-                                var filterCount = message.Body.FilterCount;//过滤（过滤是指特定地区、性别的过滤、用户设置拒收的过滤，用户接收已超4条的过滤）后，准备发送的粉丝数，原则上，FilterCount = SentCount + ErrorCount
-                                var sentCount = message.Body.SentCount;//发送成功的粉丝数
-                                var errorCount = message.Body.FilterCount;//发送失败的粉丝数
+                                var totalCount = message.Body.TotalCount.Value;//group_id下粉丝数；或者openid_list中的粉丝数
+                                var filterCount = message.Body.FilterCount.Value;//过滤（过滤是指特定地区、性别的过滤、用户设置拒收的过滤，用户接收已超4条的过滤）后，准备发送的粉丝数，原则上，FilterCount = SentCount + ErrorCount
+                                var sentCount = message.Body.SentCount.Value;//发送成功的粉丝数
+                                var errorCount = message.Body.FilterCount.Value;//发送失败的粉丝数
                                 //TODO:开发者自己的处理逻辑,这里用log4net记录日志
                                 LogWriter.Default.WriteInfo(string.Format("mass send job finishe,msgId:{0},msgStatus:{1},totalCount:{2},filterCount:{3},sentCount:{4},errorCount:{5}", msgId, msgStatus, totalCount, filterCount, sentCount, errorCount));
                             }
@@ -161,8 +161,8 @@ namespace Deepleo.Web
                         case "templatesendjobfinish"://模版消息结果,
                             #region 模版消息结果
                             {
-                                var msgId = message.Body.MsgID;
-                                var msgStatus = message.Body.Status;//发送状态为成功: success; 用户拒绝接收:failed:user block; 发送状态为发送失败（非用户拒绝）:failed: system failed
+                                var msgId = message.Body.MsgID.Value;
+                                var msgStatus = message.Body.Status.Value;//发送状态为成功: success; 用户拒绝接收:failed:user block; 发送状态为发送失败（非用户拒绝）:failed: system failed
                                 //TODO:开发者自己的处理逻辑,这里用log4net记录日志
                                 LogWriter.Default.WriteInfo(string.Format("template send job finish,msgId:{0},msgStatus:{1}", msgId, msgStatus));
                             }
@@ -236,15 +236,15 @@ namespace Deepleo.Web
                             break;
                         case "scancode_push"://扫码推事件的事件推送
                             {
-                                var scanType = message.Body.ScanCodeInfo.ScanType;//扫描类型，一般是qrcode
-                                var scanResult = message.Body.ScanCodeInfo.ScanResult;//扫描结果，即二维码对应的字符串信息
+                                var scanType = message.Body.ScanCodeInfo.ScanType.Value;//扫描类型，一般是qrcode
+                                var scanResult = message.Body.ScanCodeInfo.ScanResult.Value;//扫描结果，即二维码对应的字符串信息
                                 result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("您扫描了二维码,scanType：{0},scanResult:{1},EventKey:{2}", scanType, scanResult, eventKey));
                             }
                             break;
                         case "scancode_waitmsg"://扫码推事件且弹出“消息接收中”提示框的事件推送
                             {
-                                var scanType = message.Body.ScanCodeInfo.ScanType;//扫描类型，一般是qrcode
-                                var scanResult = message.Body.ScanCodeInfo.ScanResult;//扫描结果，即二维码对应的字符串信息
+                                var scanType = message.Body.ScanCodeInfo.ScanType.Value;//扫描类型，一般是qrcode
+                                var scanResult = message.Body.ScanCodeInfo.ScanResult.Value;//扫描结果，即二维码对应的字符串信息
                                 result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("您扫描了二维码,scanType：{0},scanResult:{1},EventKey:{2}", scanType, scanResult, eventKey));
                             }
                             break;
@@ -257,26 +257,55 @@ namespace Deepleo.Web
                             break;
                         case "pic_photo_or_album"://弹出拍照或者相册发图的事件推送
                             {
-                                var count = message.Body.SendPicsInfo.Count;//发送的图片数量
-                                var picList = message.Body.PicList;//发送的图片信息
+                                var count = message.Body.SendPicsInfo.Count.Value;//发送的图片数量
+                                var picList = message.Body.PicList.Value;//发送的图片信息
                                 result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("弹出拍照或者相册发图,count：{0},EventKey:{1}", count, eventKey));
                             }
                             break;
                         case "pic_weixin"://弹出微信相册发图器的事件推送
                             {
-                                var count = message.Body.SendPicsInfo.Count;//发送的图片数量
-                                var picList = message.Body.PicList;//发送的图片信息
+                                var count = message.Body.SendPicsInfo.Count.Value;//发送的图片数量
+                                var picList = message.Body.PicList.Value;//发送的图片信息
                                 result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("弹出微信相册发图器,count：{0},EventKey:{1}", count, eventKey));
                             }
                             break;
                         case "location_select"://弹出地理位置选择器的事件推送
                             {
-                                var location_X = message.Body.SendLocationInfo.Location_X;//X坐标信息
-                                var location_Y = message.Body.SendLocationInfo.Location_Y;//Y坐标信息
-                                var scale = message.Body.SendLocationInfo.Scale;//精度，可理解为精度或者比例尺、越精细的话 scale越高
-                                var label = message.Body.SendLocationInfo.Label;//地理位置的字符串信息
-                                var poiname = message.Body.SendLocationInfo.Poiname;//朋友圈POI的名字，可能为空  
+                                var location_X = message.Body.SendLocationInfo.Location_X.Value;//X坐标信息
+                                var location_Y = message.Body.SendLocationInfo.Location_Y.Value;//Y坐标信息
+                                var scale = message.Body.SendLocationInfo.Scale.Value;//精度，可理解为精度或者比例尺、越精细的话 scale越高
+                                var label = message.Body.SendLocationInfo.Label.Value;//地理位置的字符串信息
+                                var poiname = message.Body.SendLocationInfo.Poiname.Value;//朋友圈POI的名字，可能为空  
                                 result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("弹出地理位置选择器,location_X：{0},location_Y:{1},scale:{2},label:{3},poiname:{4},eventKey:{5}", location_X, location_Y, scale, label, poiname, eventKey));
+                            }
+                            break;
+                        case "card_pass_check"://生成的卡券通过审核时，微信会把这个事件推送到开发者填写的URL。
+                            {
+                                var cardid = message.Body.CardId.Value;//CardId
+                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, string.Format("您的卡券已经通过审核"));
+                            }
+                            break;
+                        case "card_not_pass_check"://生成的卡券未通过审核时，微信会把这个事件推送到开发者填写的URL。
+                            {
+                                var cardid = message.Body.CardId.Value;//CardId
+
+                            }
+                            break;
+                        case "user_get_card"://用户在领取卡券时，微信会把这个事件推送到开发者填写的URL。
+                            {
+                                var cardid = message.Body.CardId.Value;//CardId
+                                var isGiveByFriend = message.Body.IsGiveByFriend.Value;//是否为转赠，1代表是，0代表否。
+                                var fromUserName = message.Body.FromUserName.Value;//领券方帐号（一个OpenID）
+                                var friendUserName = message.Body.FriendUserName.Value;//赠送方账号（一个OpenID），"IsGiveByFriend”为1时填写该参数。
+                                var userCardCode = message.Body.UserCardCode.Value;//code序列号。自定义code及非自定义code的卡券被领取后都支持事件推送。
+                                var outerId = message.Body.OuterId.Value;//领取场景值，用于领取渠道数据统计。可在生成二维码接口及添加JSAPI接口中自定义该字段的整型值。
+
+                            }
+                            break;
+                        case "user_del_card"://用户在删除卡券时，微信会把这个事件推送到开发者填写的URL
+                            {
+                                var cardid = message.Body.CardId.Value;//CardId
+                                var userCardCode = message.Body.UserCardCode.Value;//商户自定义code值。非自定code推送为空
                             }
                             break;
                     }

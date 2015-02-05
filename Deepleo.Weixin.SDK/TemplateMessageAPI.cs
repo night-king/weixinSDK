@@ -79,11 +79,11 @@ namespace Deepleo.Weixin.SDK
         /// <param name="content">模板消息体,由于模板众多,且结构不一，请开发者自行按照模板自行构建模板消息体,模板消息体为json字符串,请登录微信公众号后台查看</param>
         /// <returns>  { "errcode":0,"errmsg":"ok", "msgid":200228332}
         /// </returns>
-        public static dynamic SendTemplateMessage(string access_token, string content)
+        public static dynamic SendTemplateMessage(string access_token, dynamic content)
         {
             var url = string.Format("https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={0}", access_token);
             var client = new HttpClient();
-            var result = client.PostAsync(url, new StringContent(content)).Result;
+            var result = client.PostAsync(url, new StringContent(DynamicJson.Serialize(content))).Result;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
 
