@@ -132,13 +132,13 @@ namespace Deepleo.Weixin.SDK
         /// 获取用户基本信息（包括UnionID机制）
         /// 注意：如果开发者有在多个公众号，或在公众号、移动应用之间统一用户帐号的需求，需要前往微信开放平台（open.weixin.qq.com）绑定公众号后，才可利用UnionID机制来满足上述需求。
         /// </summary>
-        /// <param name="token"></param>
+        /// <param name="access_token"></param>
         /// <param name="openId"></param>
         /// <returns>UnionID机制的返回值中将包含“unionid”</returns>
-        public static dynamic GetInfo(string token, string openId)
+        public static dynamic GetInfo(string access_token, string openId)
         {
             var client = new HttpClient();
-            var result = client.GetAsync(string.Format("https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}&lang=zh_CN", token, openId)).Result;
+            var result = client.GetAsync(string.Format("https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}&lang=zh_CN", access_token, openId)).Result;
             if (!result.IsSuccessStatusCode) return null;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
