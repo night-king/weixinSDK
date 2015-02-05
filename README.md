@@ -85,10 +85,10 @@ Deepleo.Web/Views/JSSDK/Pay.cshtml
  Deepleo.Web项目，请编译后发布到服务器，并修改web.config(appid,appsecrect,Token,EncodingAESKey)， 在后台将服务地址改为：[域名]/weixin。demo在线演示请关注微信公众号：
 
 (1) 鸣创软件(订阅号所有可以实现的功能演示,)
-<img src="http://weixinsdk.net/data/attachment/forum/201502/02/102815etfqqqfvj9tdtjz4.jpg" style="width:100px; height:100px;"/>
+    <img src="http://weixinsdk.net/data/attachment/forum/201502/02/102815etfqqqfvj9tdtjz4.jpg" style="width:100px; height:100px;"/>
 
 (2) 慢做菜(基于WeixinSDK实现的菜谱查询服务)
-<img src="http://weixinsdk.net/data/attachment/forum/201502/02/102818c29jxbepe2nbjm2n.jpg" style="width:100px; height:100px;"/>
+     <img src="http://weixinsdk.net/data/attachment/forum/201502/02/102818c29jxbepe2nbjm2n.jpg" style="width:100px; height:100px;"/>
 
 (3) http://weixinsdk.deepleo.com/jssdk (js-sdk演示,需要在微信中打开， 由于本公众号只是未认证订阅号，故请对照后台权限测试)
 
@@ -117,7 +117,7 @@ Deepleo.Web/Views/JSSDK/Pay.cshtml
 
 2) demo项目发布之前如何配置？
 
-    答：需要修改web.config里appSettings节点下关于网站配置和微信相关配置，如果不需要的功能不用填写，譬如微信支付的相关配置。
+    答：需要修改web.config里appSettings节点下关于网站配置和微信相关配置，如果不需要的功能不用填写。
    
         读取这些配置的类在App_start/WeixinConfig.cs中，您可以根据自己的业务逻辑更改实现方式。
        
@@ -156,4 +156,10 @@ Code and documentation copyright 2011-2015. Code released under the MIT license.
 11.郑重申明
 
 本SDK不收费，坚持开源，没有未公开的api，项目中的代码是我自己开发过的项目积累。如果在使用中遇到什么问题，请到官方QQ群或者论坛中提问，直接加我私人QQ提问的概不做答。如果发现bug，请到https://github.com/night-king/weixinSDK/issues 提出，我会尽快解决，并发布论坛QQ群群邮件、论坛bug栏目、以及QQ群通知。
+
+12.捐助
+
+如果这个项目对您有用，我们欢迎各方任何形式的捐助，也包括参与到项目代码更新或意见反馈中来。谢谢！资金捐助：
+
+  <img src="http://weixinsdk.net/data/attachment/forum/201502/04/121113seaozjafla6a8qaa.jpg" style="width:100px; height:100px;"/>
 
