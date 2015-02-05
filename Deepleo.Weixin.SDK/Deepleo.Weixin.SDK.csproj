@@ -61,6 +61,9 @@
     <Compile Include="MessageStatisticsAPI.cs" />
     <Compile Include="NewsStatisticsAPI.cs" />
     <Compile Include="OAuth2API.cs" />
+    <Compile Include="Pay\WxBizPayAPI.cs" />
+    <Compile Include="Pay\PayUtil.cs" />
+    <Compile Include="Pay\WxMicroPayAPI.cs" />
     <Compile Include="Pay\WxPayAPI.cs" />
     <Compile Include="ServiceAdminAPI.cs" />
     <Compile Include="CustomMenuAPI.cs" />
