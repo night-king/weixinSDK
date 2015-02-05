@@ -52,6 +52,16 @@
     </Compile>
     <Compile Include="AdvanceMassReplayMessageAPI.cs" />
     <Compile Include="BasicAPI.cs" />
+    <Compile Include="Card\CreateCardAPI.cs" />
+    <Compile Include="Card\ManageCardAPI.cs" />
+    <Compile Include="Card\SendCardAPI.cs" />
+    <Compile Include="Card\Special\AirTickectAPI.cs" />
+    <Compile Include="Card\Special\MeetingTicketAPI.cs" />
+    <Compile Include="Card\Special\LuckyMoneyAPI.cs" />
+    <Compile Include="Card\Special\MovieTickectAPI.cs" />
+    <Compile Include="Card\Special\MemberCardAPI.cs" />
+    <Compile Include="Card\Special\TestWhiteAPI.cs" />
+    <Compile Include="Card\UseCardAPI.cs" />
     <Compile Include="Cryptography\Cryptography.cs" />
     <Compile Include="Cryptography\Sample.cs" />
     <Compile Include="Cryptography\WXBizMsgCrypt.cs" />
