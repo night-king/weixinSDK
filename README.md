@@ -84,7 +84,21 @@ Deepleo.Web/Views/JSSDK/Pay.cshtml
 
 (19)OAuth2API.cs                                 对应微信API的 用户管理=》 "网页授权获取用户基本信息”
 
-微信小店接口、微信卡券、设备功能接口暂未开发。
+(20)微信卡券
+
+     Card/CreateCardAPI.cs  创建卡券接口
+     
+     Card/SendCardAPI.cs    卡券投放接口
+     
+     Card/UseCardAPI.cs     卡券核销接口
+
+     Card/ManageCardAPI.cs  卡券管理接口
+
+     Card/Special           特殊卡票接口
+     
+     Card/TestWhiteAPI.cs   设置测试用户白名单
+
+微信小店接口、设备功能接口暂未开发。
 
 5.demo
  Deepleo.Web项目，请编译后发布到服务器，并修改web.config(appid,appsecrect,Token,EncodingAESKey)， 在后台将服务地址改为：[域名]/weixin。demo在线演示请关注微信公众号：
