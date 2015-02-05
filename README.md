@@ -64,7 +64,9 @@
 
 (17)JSSDK/JSAPI.cs                              对应微信API的 "微信JS接口" =>"微信JS-SDK说明文档"   =>"附录1-JS-SDK使用权限签名算法"
 
-(18)Pay/WxPayAPI.cs                             对应微信支付API =>公共API
+(18)微信支付
+     
+    Pay/WxPayAPI.cs                             对应微信支付API =>公共API
 
     Pay/WxMicroPayAP.cs                         对应微信支付API =>被扫支付
     
@@ -80,6 +82,7 @@ Deepleo.Web/Controllers/JSSDKController.cs/Pay
 
 Deepleo.Web/Views/JSSDK/Pay.cshtml
 
+(19)OAuth2API.cs                                 对应微信API的 用户管理=》 "网页授权获取用户基本信息”
 
 微信小店接口、微信卡券、设备功能接口暂未开发。
 
