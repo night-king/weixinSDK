@@ -64,11 +64,13 @@
 
 (17)JSSDK/JSAPI.cs                              对应微信API的 "微信JS接口" =>"微信JS-SDK说明文档"   =>"附录1-JS-SDK使用权限签名算法"
 
-(18)Pay/WxPayAPI.cs                             对应微信支付API的公共API部分: 
+(18)Pay/WxPayAPI.cs                             对应微信支付API =>公共API
 
-http://pay.weixin.qq.com/wiki/doc/api/index.php?chapter=9_1
-...
-http://pay.weixin.qq.com/wiki/doc/api/index.php?chapter=9_9
+    Pay/WxMicroPayAP.cs                         对应微信支付API =>被扫支付
+    
+    Pay/WxBizPayAP.cs                           对应微信支付API =>扫码原生支付
+    
+    官方文档：http://pay.weixin.qq.com/wiki/doc/api/index.php
 
 其中微信内网页支付 Demo已经在SDK中实现，具体请参考：
 
