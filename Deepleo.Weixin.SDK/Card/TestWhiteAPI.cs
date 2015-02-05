@@ -5,7 +5,7 @@ using System.Text;
 using System.Net.Http;
 using Codeplex.Data;
 
-namespace Deepleo.Weixin.SDK.Card.Special
+namespace Deepleo.Weixin.SDK.Card
 {
     /// <summary>
     /// 特殊卡票接口=> 设置测试用户白名单
