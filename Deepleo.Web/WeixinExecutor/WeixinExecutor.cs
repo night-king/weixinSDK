@@ -107,20 +107,33 @@ namespace Deepleo.Web
                         case "subscribe"://用户未关注时，进行关注后的事件推送
                             #region 首次关注
                             var token = WeixinConfig.TokenHelper.GetToken();
-                            
+
                             //TODO: 获取用户基本信息后，将用户信息存储在本地。
                             //var weixinInfo = UserAdminAPI.GetInfo(token, openId);//注意：订阅号没有此权限
 
                             if (!string.IsNullOrEmpty(eventKey))
                             {
                                 var qrscene = eventKey.Replace("qrscene_", "");//此为场景二维码的场景值
-                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, "欢迎订阅，场景值：" + qrscene);
+                                result = ReplayPassiveMessageAPI.RepayNews(openId, myUserName,
+                                    new WeixinNews
+                                    {
+                                        title = "欢迎订阅，场景值：" + qrscene,
+                                        description = "欢迎订阅，场景值：" + qrscene,
+                                        picurl = string.Format("{0}/ad.jpg", domain),
+                                        url = domain
+                                    });
                             }
                             else
                             {
-                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, "欢迎订阅");
+                                result = ReplayPassiveMessageAPI.RepayNews(openId, myUserName,
+                                 new WeixinNews
+                                 {
+                                     title = "欢迎订阅",
+                                     description = "欢迎订阅，点击此消息查看在线demo",
+                                     picurl = string.Format("{0}/ad.jpg", domain),
+                                     url = domain
+                                 });
                             }
-
                             #endregion
                             break;
                         case "unsubscribe"://取消关注
@@ -133,11 +146,25 @@ namespace Deepleo.Web
                             if (!string.IsNullOrEmpty(eventKey))
                             {
                                 var qrscene = eventKey.Replace("qrscene_", "");//此为场景二维码的场景值
-                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, "欢迎使用，场景值：" + qrscene);
+                                result = ReplayPassiveMessageAPI.RepayNews(openId, myUserName,
+                                    new WeixinNews
+                                    {
+                                        title = "欢迎使用，场景值：" + qrscene,
+                                        description = "欢迎使用，场景值：" + qrscene,
+                                        picurl = string.Format("{0}/ad.jpg", domain),
+                                        url = domain
+                                    });
                             }
                             else
                             {
-                                result = ReplayPassiveMessageAPI.RepayText(openId, myUserName, "欢迎使用");
+                                result = ReplayPassiveMessageAPI.RepayNews(openId, myUserName,
+                                 new WeixinNews
+                                 {
+                                     title = "欢迎使用",
+                                     description = "欢迎订阅，点击此消息查看在线demo",
+                                     picurl = string.Format("{0}/ad.jpg", domain),
+                                     url = domain
+                                 });
                             }
                             #endregion
                             break;
@@ -306,6 +333,15 @@ namespace Deepleo.Web
                             {
                                 var cardid = message.Body.CardId.Value;//CardId
                                 var userCardCode = message.Body.UserCardCode.Value;//商户自定义code值。非自定code推送为空
+                            }
+                            break;
+                        case "merchant_order"://微信小店：订单付款通知:在用户在微信中付款成功后，微信服务器会将订单付款通知推送到开发者在公众平台网站中设置的回调URL（在开发模式中设置）中，如未设置回调URL，则获取不到该事件推送。
+                            {
+                                var orderId = message.Body.OrderId.Value;//CardId
+                                var orderStatus = message.Body.OrderStatus.Value;//OrderStatus
+                                var productId = message.Body.ProductId.Value;//ProductId
+                                var skuInfo = message.Body.SkuInfo.Value;//SkuInfo
+
                             }
                             break;
                     }

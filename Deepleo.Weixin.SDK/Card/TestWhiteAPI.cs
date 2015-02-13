@@ -8,7 +8,7 @@ using Codeplex.Data;
 namespace Deepleo.Weixin.SDK.Card
 {
     /// <summary>
-    /// 特殊卡票接口=> 设置测试用户白名单
+    /// 设置测试用户白名单
     /// </summary>
     public class TestWhiteAPI
     {
