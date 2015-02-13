@@ -114,7 +114,7 @@ Deepleo.Web/Views/JSSDK/Pay.cshtml
      
      Merchant/CommonAPI.cs   功能接口
 
-微信小店接口、设备功能接口暂未开发。
+设备功能接口暂未开发。
 
 5.demo
  Deepleo.Web项目，请编译后发布到服务器，并修改web.config(appid,appsecrect,Token,EncodingAESKey)， 在后台将服务地址改为：[域名]/weixin。demo在线演示请关注微信公众号：
