@@ -98,6 +98,22 @@ Deepleo.Web/Views/JSSDK/Pay.cshtml
      
      Card/TestWhiteAPI.cs   设置测试用户白名单
 
+(21) 微信小店(<a href="http://mp.weixin.qq.com/wiki/8/703923b7349a607f13fb3100163837f0.html">微信商铺API手册V1.15</a>)
+    
+     Merchant/ProductAPI.cs  商品管理接口
+     
+     Merchant/ExpressAPI.cs  邮费模板管理接口
+     
+     Merchant/StockAPI.cs    库存管理接口
+     
+     Merchant/GroupAPI.cs    分组管理接口
+     
+     Merchant/ShelfAPI.cs    货架管理接口
+     
+     Merchant/OrderAPI.cs    订单管理接口
+     
+     Merchant/CommonAPI.cs   功能接口
+
 微信小店接口、设备功能接口暂未开发。
 
 5.demo
