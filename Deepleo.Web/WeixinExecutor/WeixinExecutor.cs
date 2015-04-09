@@ -201,7 +201,7 @@ namespace Deepleo.Web
                             var lng = message.Body.Longitude.Value.ToString();
                             var pcn = message.Body.Precision.Value.ToString();
                             //TODO:在此处将经纬度记录在数据库,这里用log4net记录日志
-                            LogWriter.Default.WriteInfo(string.Format("openid:{0} ,location,lat:{1},lng:{21},pcn:{3}", openId, lat, lng, pcn));
+                            LogWriter.Default.WriteInfo(string.Format("openid:{0} ,location,lat:{1},lng:{2},pcn:{3}", openId, lat, lng, pcn));
                             #endregion
                             break;
                         case "voice"://语音消息
