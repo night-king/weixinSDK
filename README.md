@@ -196,5 +196,5 @@ Code and documentation copyright 2011-2015. Code released under the MIT license.
 
 如果这个项目对您有用，我们欢迎各方任何形式的捐助，也包括参与到项目代码更新或意见反馈中来。谢谢！资金捐助：
 
-  <img src="http://weixinsdk.net/data/attachment/forum/201502/04/121113seaozjafla6a8qaa.jpg" style="width:100px; height:100px;"/>
+  <img src="http://weixinsdk.net/data/attachment/forum/201504/10/143139l7bw4jbtj5317tzd.jpg" style="width:100px; height:100px;"/>
 
