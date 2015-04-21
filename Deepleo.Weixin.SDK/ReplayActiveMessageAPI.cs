@@ -37,7 +37,7 @@ namespace Deepleo.Weixin.SDK
                 .Append('"' + "msgtype" + '"' + ":").Append('"' + "text" + '"').Append(",")
                 .Append('"' + "text" + '"' + ":")
                 .Append("{")
-                .Append('"' + "content" + '"' + ":").Append("'" + content + "'")
+                .Append('"' + "content" + '"' + ":").Append('"' + content + '"')
                 .Append("}");
             if (!string.IsNullOrEmpty(kf_account))
             {
