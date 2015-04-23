@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deepleo.Web", "Deepleo.Web\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deepleo.Weixin.SDK", "Deepleo.Weixin.SDK\Deepleo.Weixin.SDK.csproj", "{E7421A8D-6149-402A-82F8-F6D7728CEED1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deepleo.Weixin.QYSDK", "Deepleo.Weixin.QYSDK\Deepleo.Weixin.QYSDK.csproj", "{129A0FAA-2649-45A5-BCB7-B0D7929FEBCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deepleo.QYWeb", "Deepleo.QYWeb\Deepleo.QYWeb.csproj", "{594DCEE3-2974-4350-99BD-18DC99AA264D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{E7421A8D-6149-402A-82F8-F6D7728CEED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7421A8D-6149-402A-82F8-F6D7728CEED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7421A8D-6149-402A-82F8-F6D7728CEED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{129A0FAA-2649-45A5-BCB7-B0D7929FEBCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{129A0FAA-2649-45A5-BCB7-B0D7929FEBCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{129A0FAA-2649-45A5-BCB7-B0D7929FEBCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{129A0FAA-2649-45A5-BCB7-B0D7929FEBCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594DCEE3-2974-4350-99BD-18DC99AA264D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594DCEE3-2974-4350-99BD-18DC99AA264D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594DCEE3-2974-4350-99BD-18DC99AA264D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594DCEE3-2974-4350-99BD-18DC99AA264D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

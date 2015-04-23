@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <style type="text/css">
+        .align-center
+        {
+            margin: 0 auto;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @RenderSection("featured", required: false)
+        @RenderBody()
+    </div>
+    <div style="position: relative; bottom: 0px; height: 100px; width: 100%;">
+        <hr />
+        <div class="align-center">
+            Copy right: <a href="http://www.weixinsdk.net/">weixinsdk.net</a> 2015</div>
+        <div class="align-center">
+            <a href="https://github.com/night-king/weixinSDK">Github Online</a></div>
+    </div>
+</body>
+</html>
