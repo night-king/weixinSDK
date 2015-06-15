@@ -107,7 +107,9 @@ namespace Deepleo.Weixin.SDK.Pay
             var client = new HttpClient();
             var result = client.PostAsync(url, new StringContent(postdata)).Result;
             if (!result.IsSuccessStatusCode) return string.Empty;
-            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+            //return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+            // 此处返回的是XML不是JSON, 详见：http://pay.weixin.qq.com/wiki/doc/api/index.php?chapter=9_2
+            return new DynamicXml(result.Content.ReadAsStringAsync().Result);
         }
 
 
