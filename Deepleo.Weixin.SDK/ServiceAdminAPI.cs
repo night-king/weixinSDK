@@ -69,7 +69,7 @@ namespace Deepleo.Weixin.SDK
             builder
                 .Append("{")
                 .Append('"' + "kf_account" + '"' + ":").Append(kf_account).Append(",")
-                .Append('"' + "nickname" + '"' + ":").Append(nickname)
+                .Append('"' + "nickname" + '"' + ":").Append(nickname).Append(",")
                 .Append('"' + "password" + '"' + ":").Append(pswmd5)
                 .Append("}");
             var client = new HttpClient();
@@ -92,7 +92,7 @@ namespace Deepleo.Weixin.SDK
             builder
                 .Append("{")
                 .Append('"' + "kf_account" + '"' + ":").Append(kf_account).Append(",")
-                .Append('"' + "nickname" + '"' + ":").Append(nickname)
+                .Append('"' + "nickname" + '"' + ":").Append(nickname).Append(",")
                 .Append('"' + "password" + '"' + ":").Append(pswmd5)
                 .Append("}");
             var client = new HttpClient();
