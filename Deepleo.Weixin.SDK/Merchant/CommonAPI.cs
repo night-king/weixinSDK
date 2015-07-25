@@ -17,7 +17,8 @@ namespace Deepleo.Weixin.SDK.Merchant
         /// 上传图片
         /// </summary>
         /// <param name="access_token"></param>
-        /// <param name="file">图片文件本地路劲</param>
+        /// <param name="fileName">图片名称,如1.jpg</param>
+        /// <param name="inputStream">图片名称,如1.jpg</param>
         /// <returns>
         /// {
         ///"errcode":0,
@@ -25,12 +26,10 @@ namespace Deepleo.Weixin.SDK.Merchant
         ///"image_url": "http://mmbiz.qpic.cn/mmbiz/4whpV1VZl2ibl4JWwwnW3icSJGqecVtRiaPxwWEIr99eYYL6AAAp1YBo12CpQTXFH6InyQWXITLvU4CU7kic4PcoXA/0"
         ///}
         /// </returns>
-        public static dynamic UploadImg(string access_token, string file)
+        public static dynamic UploadImg(string access_token, string fileName,Stream inputStream)
         {
-            var url = string.Format("https://api.weixin.qq.com/merchant/common/upload_img?access_token={0}&filename={1}", access_token, Path.GetFileName(file).ToString());
-            var fileDictionary = new Dictionary<string, string>();
-            fileDictionary["filename"] = file;
-            var returnText = Util.HttpRequestPost(url, fileDictionary);
+            var url = string.Format("https://api.weixin.qq.com/merchant/common/upload_img?access_token={0}&filename={1}", access_token, fileName);
+            var returnText = Util.HttpRequestPost(url, "filename", fileName, inputStream);
             return DynamicJson.Parse(returnText);
         }
     }

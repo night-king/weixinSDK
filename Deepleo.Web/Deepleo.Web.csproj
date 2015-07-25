@@ -112,6 +112,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JSSDKController.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Controllers\WXPayController.cs" />
     <Compile Include="Controllers\WeixinController.cs" />
@@ -180,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Media\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
