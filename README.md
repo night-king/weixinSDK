@@ -4,6 +4,10 @@
 
 微信公众平台：http://mp.weixin.qq.com/wiki/home/index.html
 
+Deepleo.Weixin.SDK是SDK源代码
+
+Deepleo.Web是一个asp.net mvc的demo
+
 2.核心思想
 
 运用Dynamic(.net 4.0以及以上版本支持)在程序中传递微信所需的结构化（xml,json）对象，减少大量代码，实现轻量级。
