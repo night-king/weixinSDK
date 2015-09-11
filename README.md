@@ -62,3 +62,5 @@ Code and documentation copyright 2011-2015. Code released under the MIT license.
 
   <img src="http://weixinsdk.net/data/attachment/forum/201504/10/143139l7bw4jbtj5317tzd.jpg" style="width:100px; height:100px;"/>
 
+7.更多详细说明请访问：http://weixinsdk.net/forum.php?mod=viewthread&tid=6&extra=page%3D1
+
