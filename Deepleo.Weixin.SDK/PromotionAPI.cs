@@ -42,7 +42,7 @@ namespace Deepleo.Weixin.SDK
             if (type == ParameterQrcodeType.QR_SCENE)
             {
                 action_name = "QR_SCENE";
-                content.Append('"' + "expire_seconds" + '"' + ":").Append(new TimeSpan(days).TotalSeconds).Append(",");
+                content.Append('"' + "expire_seconds" + '"' + ":").Append(new TimeSpan(days,0,0,0,0).TotalSeconds).Append(",");
             }
             content
             .Append('"' + "action_name" + '"' + ": " + '"' + action_name + '"' + ",")
