@@ -93,7 +93,7 @@ namespace Deepleo.Weixin.SDK
         public static dynamic GetUserInfo(string accessToekn, string openId, string lang = "zh_CN")
         {
             var client = new HttpClient();
-            var result = client.GetAsync(string.Format("https://api.weixin.qq.com/sns/userinfo?access_token={0}&openid={1}&lang={2}", accessToekn, openId, lang)).Result;
+            var result = client.GetAsync(string.Format("https://api.weixin.qq.com/cgi-bin/user/info?access_token={0}&openid={1}&lang={2}", accessToekn, openId, lang)).Result;
             if (!result.IsSuccessStatusCode) return null;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
