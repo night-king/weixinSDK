@@ -89,8 +89,8 @@ namespace Deepleo.Weixin.SDK
             builder.Append("{")
                    .Append('"' + "filter" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "is_to_all" + '"').Append(is_to_all)
-                                           .Append('"' + "group_id" + '"').Append(group_id)
+                                           .Append('"' + "is_to_all" + '"' + ":").Append(is_to_all).Append(",")
+                                           .Append('"' + "group_id" + '"' + ":").Append(group_id)
                                            .Append("},");
 
             switch (type)
@@ -98,37 +98,37 @@ namespace Deepleo.Weixin.SDK
                 case WeixinArtcleType.News:
                     builder.Append('"' + "mpnews" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("mpnews");
+                              .Append('"' + "msgtype" + '"' + ":").Append("mpnews");
                     break;
                 case WeixinArtcleType.Text:
                     builder.Append('"' + "text" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "content" + '"').Append(content)
+                                           .Append('"' + "content" + '"' + ":").Append(content)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("text");
+                              .Append('"' + "msgtype" + '"' + ":").Append("text");
                     break;
                 case WeixinArtcleType.Voice:
                     builder.Append('"' + "voice" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("voice");
+                              .Append('"' + "msgtype" + '"' + ":").Append("voice");
                     break;
                 case WeixinArtcleType.Image:
                     builder.Append('"' + "image" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("image");
+                              .Append('"' + "msgtype" + '"' + ":").Append("image");
                     break;
                 case WeixinArtcleType.Video:
                     builder.Append('"' + "mpvideo" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("mpvideo");
+                              .Append('"' + "msgtype" + '"' + ":").Append("mpvideo");
                     break;
             }
             builder.Append("}");
@@ -163,39 +163,39 @@ namespace Deepleo.Weixin.SDK
                 case WeixinArtcleType.News:
                     builder.Append('"' + "mpnews" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("mpnews");
+                              .Append('"' + "msgtype" + '"' + ":").Append("mpnews");
                     break;
                 case WeixinArtcleType.Text:
                     builder.Append('"' + "text" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "content" + '"').Append(content)
+                                           .Append('"' + "content" + '"' + ":").Append(content)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("text");
+                              .Append('"' + "msgtype" + '"' + ":").Append("text");
                     break;
                 case WeixinArtcleType.Voice:
                     builder.Append('"' + "voice" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("voice");
+                              .Append('"' + "msgtype" + '"' + ":").Append("voice");
                     break;
                 case WeixinArtcleType.Image:
                     builder.Append('"' + "image" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("image");
+                              .Append('"' + "msgtype" + '"' + ":").Append("image");
                     break;
                 case WeixinArtcleType.Video:
                     builder.Append('"' + "video" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
-                                           .Append('"' + "title" + '"').Append(videoTitle)
-                                           .Append('"' + "description" + '"').Append(videoDesc)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content).Append(",")
+                                           .Append('"' + "title" + '"' + ":").Append(videoTitle).Append(",")
+                                           .Append('"' + "description" + '"' + ":").Append(videoDesc)
                                            .Append("},")
-                              .Append('"' + "msgtype" + '"').Append("video");
+                              .Append('"' + "msgtype" + '"' + ":").Append("video");
                     break;
             }
             builder.Append("}");
@@ -244,35 +244,35 @@ namespace Deepleo.Weixin.SDK
                 case WeixinArtcleType.News:
                     builder.Append('"' + "mpnews" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
                               .Append('"' + "msgtype" + '"').Append("mpnews");
                     break;
                 case WeixinArtcleType.Text:
                     builder.Append('"' + "text" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "content" + '"').Append(content)
+                                           .Append('"' + "content" + '"' + ":").Append(content)
                                            .Append("},")
                               .Append('"' + "msgtype" + '"').Append("text");
                     break;
                 case WeixinArtcleType.Voice:
                     builder.Append('"' + "voice" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
                               .Append('"' + "msgtype" + '"').Append("voice");
                     break;
                 case WeixinArtcleType.Image:
                     builder.Append('"' + "image" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
                               .Append('"' + "msgtype" + '"').Append("image");
                     break;
                 case WeixinArtcleType.Video:
                     builder.Append('"' + "video" + '"' + ":")
                                            .Append("{")
-                                           .Append('"' + "media_id" + '"').Append(content)
+                                           .Append('"' + "media_id" + '"' + ":").Append(content)
                                            .Append("},")
                               .Append('"' + "msgtype" + '"').Append("video");
                     break;

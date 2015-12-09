@@ -101,6 +101,7 @@
     <Compile Include="UserStatisticsAPI.cs" />
     <Compile Include="TemplateMessageAPI.cs" />
     <Compile Include="UserAdminAPI.cs" />
+    <Compile Include="MaterialAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cryptography\Readme.txt" />

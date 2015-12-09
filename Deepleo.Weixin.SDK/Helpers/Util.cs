@@ -40,7 +40,7 @@ namespace Deepleo.Weixin.SDK.Helpers
             {
                 inputBye = Encoding.GetEncoding(charset).GetBytes(encypStr);
             }
-            catch (Exception ex)
+            catch
             {
                 inputBye = Encoding.GetEncoding("GB2312").GetBytes(encypStr);
             }
@@ -103,66 +103,49 @@ namespace Deepleo.Weixin.SDK.Helpers
             return instr.Replace("&amp;", "&").Replace("&lt;", "<")
                         .Replace("&gt;", ">").Replace("&quot;", "\"");
         }
+      
         /// <summary>
-        /// 使用Post方法获取字符串结果
+        /// FORM表单POST方式上传一个多媒体文件
         /// </summary>
-        /// <param name="url"></param>
-        /// <param name="cookieContainer"></param>
-        /// <param name="postStream"></param>
-        /// <param name="fileDictionary">需要上传的文件，Key：对应要上传的Name，Value：本地文件名</param>
+        /// <param name="url">API URL</param>
+        /// <param name="typeName"></param>
+        /// <param name="fileName"></param>
+        /// <param name="fs"></param>
+        /// <param name="encoding"></param>
         /// <returns></returns>
-        public static string HttpRequestPost(string url, Dictionary<string, string> fileDictionary = null, string encoding = "UTF8")
+        public static string HttpRequestPost(string url, string typeName, string fileName, Stream fs, string encoding = "UTF-8")
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
-            request.Timeout = 100;
-
+            request.Timeout = 10000;
             var postStream = new MemoryStream();
             #region 处理Form表单文件上传
-            var formUploadFile = fileDictionary != null && fileDictionary.Count > 0;//是否用Form上传文件
-            if (formUploadFile)
+            //通过表单上传文件
+            string boundary = "----" + DateTime.Now.Ticks.ToString("x");
+            string formdataTemplate = "\r\n--" + boundary + "\r\nContent-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: application/octet-stream\r\n\r\n";
+            try
             {
-                //通过表单上传文件
-                string boundary = "----" + DateTime.Now.Ticks.ToString("x");
+                var formdata = string.Format(formdataTemplate, typeName, fileName);
+                var formdataBytes = Encoding.ASCII.GetBytes(postStream.Length == 0 ? formdata.Substring(2, formdata.Length - 2) : formdata);//第一行不需要换行
+                postStream.Write(formdataBytes, 0, formdataBytes.Length);
 
-                string formdataTemplate = "\r\n--" + boundary + "\r\nContent-Disposition: form-data; name=\"{0}\"; filename=\"{1}\"\r\nContent-Type: application/octet-stream\r\n\r\n";
-
-                foreach (var file in fileDictionary)
+                //写入文件
+                byte[] buffer = new byte[1024];
+                int bytesRead = 0;
+                while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
                 {
-                    try
-                    {
-                        var fileName = file.Value;
-                        //准备文件流
-                        using (var fileStream = new FileStream(fileName, FileMode.Open))
-                        {
-                            var formdata = string.Format(formdataTemplate, file.Key, fileName);
-                            var formdataBytes = Encoding.ASCII.GetBytes(postStream.Length == 0 ? formdata.Substring(2, formdata.Length - 2) : formdata);//第一行不需要换行
-                            postStream.Write(formdataBytes, 0, formdataBytes.Length);
-
-                            //写入文件
-                            byte[] buffer = new byte[1024];
-                            int bytesRead = 0;
-                            while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
-                            {
-                                postStream.Write(buffer, 0, bytesRead);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw ex;
-                    }
+                    postStream.Write(buffer, 0, bytesRead);
                 }
-                //结尾
-                var footer = Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
-                postStream.Write(footer, 0, footer.Length);
-
-                request.ContentType = string.Format("multipart/form-data; boundary={0}", boundary);
             }
-            else
+            catch (Exception ex)
             {
-                request.ContentType = "application/x-www-form-urlencoded";
+                throw ex;
             }
+
+            //结尾
+            var footer = Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
+            postStream.Write(footer, 0, footer.Length);
+            request.ContentType = string.Format("multipart/form-data; boundary={0}", boundary);
             #endregion
 
             request.ContentLength = postStream != null ? postStream.Length : 0;
@@ -212,57 +195,6 @@ namespace Deepleo.Weixin.SDK.Helpers
             foreach (var b in data)
             {
                 stream.WriteByte(b);
-            }
-        }
-
-        /** 对字符串进行URL编码 */
-        public static string UrlEncode(string instr, string charset)
-        {
-            //return instr;
-            if (instr == null || instr.Trim() == "")
-                return "";
-            else
-            {
-                string res;
-
-                try
-                {
-                    res = HttpUtility.UrlEncode(instr, Encoding.GetEncoding(charset));
-
-                }
-                catch (Exception ex)
-                {
-                    res = HttpUtility.UrlEncode(instr, Encoding.GetEncoding("GB2312"));
-                }
-
-
-                return res;
-            }
-        }
-
-
-        /** 对字符串进行URL解码 */
-        public static string UrlDecode(string instr, string charset)
-        {
-            if (instr == null || instr.Trim() == "")
-                return "";
-            else
-            {
-                string res;
-
-                try
-                {
-                    res = HttpUtility.UrlDecode(instr, Encoding.GetEncoding(charset));
-
-                }
-                catch (Exception ex)
-                {
-                    res = HttpUtility.UrlDecode(instr, Encoding.GetEncoding("GB2312"));
-                }
-
-
-                return res;
-
             }
         }
     }

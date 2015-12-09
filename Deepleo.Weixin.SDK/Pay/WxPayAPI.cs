@@ -107,7 +107,9 @@ namespace Deepleo.Weixin.SDK.Pay
             var client = new HttpClient();
             var result = client.PostAsync(url, new StringContent(postdata)).Result;
             if (!result.IsSuccessStatusCode) return string.Empty;
-            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+            //return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
+            // 此处返回的是XML不是JSON, 详见：http://pay.weixin.qq.com/wiki/doc/api/index.php?chapter=9_2
+            return new DynamicXml(result.Content.ReadAsStringAsync().Result);
         }
 
 
@@ -384,6 +386,7 @@ namespace Deepleo.Weixin.SDK.Pay
             foreach (var sA in stringADict.OrderBy(x => x.Key))//参数名ASCII码从小到大排序（字典序）；
             {
                 if (string.IsNullOrEmpty(sA.Value)) continue;//参数的值为空不参与签名；
+                if (string.Compare(sA.Key, "sign", true) == 0) continue;    // 参数中为签名的项，不参加计算
                 sb.Append(sA.Key).Append("=").Append(sA.Value).Append("&");
             }
             var string1 = sb.ToString();

@@ -66,47 +66,19 @@ namespace Deepleo.Weixin.SDK
             var token = DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
             return token;
         }
-
         /// <summary>
-        /// 上传多媒体文件
-        /// http://mp.weixin.qq.com/wiki/index.php?title=%E4%B8%8A%E4%BC%A0%E4%B8%8B%E8%BD%BD%E5%A4%9A%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6
-        /// 1.上传的媒体文件限制：
-        ///图片（image) : 1MB，支持JPG格式
-        ///语音（voice）：1MB，播放长度不超过60s，支持MP4格式
-        ///视频（video）：10MB，支持MP4格式
-        ///缩略图（thumb)：64KB，支持JPG格式
-        ///2.媒体文件在后台保存时间为3天，即3天后media_id失效
+        /// 获取微信服务器IP地址
+        ///http://mp.weixin.qq.com/wiki/0/2ad4b6bfd29f30f71d39616c2a0fcedc.html
         /// </summary>
         /// <param name="access_token"></param>
-        /// <param name="type">媒体文件类型，分别有图片（image）、语音（voice）、视频（video）和缩略图（thumb）</param>
-        /// <param name="file">本地完整路径</param>
-        /// <returns>media_id</returns>
-        public static string UploadMedia(string access_token, string type, string file)
+        /// <returns>{"ip_list":["127.0.0.1","127.0.0.1"]}</returns>
+        public static dynamic GetCallbackIP(string access_token)
         {
-            var url = string.Format("http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token={0}&type={1}", access_token, type.ToString());
-            var fileDictionary = new Dictionary<string, string>();
-            fileDictionary["media"] = file;
-            var returnText = Util.HttpRequestPost(url, fileDictionary);
-            if (returnText.Contains("errcode"))
-            {
-                return string.Empty;
-            }
-            var media = DynamicJson.Parse(returnText);
-            return media.media_id;
-        }
-
-        /// <summary>
-        /// 下载多媒体
-        /// 视频文件不支持下载，调用该接口需http协议。
-        /// </summary>
-        /// <param name="access_token"></param>
-        /// <param name="media_id"></param>
-        /// <param name="media_id"></param>
-        /// <returns></returns>
-        public static void DownloadMedia(string access_token, string media_id, Stream sm)
-        {
-            var url = string.Format("http://file.api.weixin.qq.com/cgi-bin/media/get?access_token={0}&media_id={1}", access_token, media_id);
-            Util.Download(url, sm);
+            var url = string.Format("https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token={0}", access_token);
+            var client = new HttpClient();
+            var result = client.GetAsync(url).Result;
+            if (!result.IsSuccessStatusCode) return string.Empty;
+            return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
 
     }

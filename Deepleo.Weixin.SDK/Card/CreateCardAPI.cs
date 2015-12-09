@@ -5,6 +5,7 @@ using System.Text;
 using Deepleo.Weixin.SDK.Helpers;
 using Codeplex.Data;
 using System.Net.Http;
+using System.IO;
 
 namespace Deepleo.Weixin.SDK.Card
 {
@@ -23,12 +24,10 @@ namespace Deepleo.Weixin.SDK.Card
         /// <param name="access_token"></param>
         /// <param name="file"></param>
         /// <returns>返回上传后路径</returns>
-        public static string UploadLogo(string access_token, string file)
+        public static string UploadLogo(string access_token, string fileName, Stream inputStream)
         {
             var url = string.Format("http://api.weixin.qq.com/cgi-bin/uploadimg?access_token={0}", access_token);
-            var fileDictionary = new Dictionary<string, string>();
-            fileDictionary["buffer"] = file;
-            var returnMessage = DynamicJson.Parse(Util.HttpRequestPost(url, fileDictionary));
+            var returnMessage = DynamicJson.Parse(Util.HttpRequestPost(url, "buffer", fileName, inputStream));
             if (returnMessage.errcode != 0) return string.Empty;
             return returnMessage.url;
         }

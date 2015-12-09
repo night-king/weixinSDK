@@ -33,7 +33,7 @@ namespace Deepleo.Weixin.SDK
         /// <param name="type">二维码类型，QR_SCENE为临时,QR_LIMIT_SCENE为永久</param>
         /// <param name="scene_id">场景值ID，临时二维码时为32位非0整型，永久二维码时最大值为100000（目前参数只支持1--100000）</param>
         /// <returns>返回场景二维码的微信服务器地址</returns>
-        public static string CreateParameterQrcode(string token, ParameterQrcodeType type, int scene_id)
+        public static string CreateParameterQrcode(string token, ParameterQrcodeType type, int scene_id,int days)
         {
             var client = new HttpClient();
             var content = new StringBuilder();
@@ -42,7 +42,7 @@ namespace Deepleo.Weixin.SDK
             if (type == ParameterQrcodeType.QR_SCENE)
             {
                 action_name = "QR_SCENE";
-                content.Append('"' + "expire_seconds" + '"' + ":1800,");
+                content.Append('"' + "expire_seconds" + '"' + ":").Append(new TimeSpan(days,0,0,0,0).TotalSeconds).Append(",");
             }
             content
             .Append('"' + "action_name" + '"' + ": " + '"' + action_name + '"' + ",")
