@@ -40,7 +40,7 @@ Deepleo.Web是一个asp.net mvc的demo
 
     答：如果开发者遇到开发问题或者遇到SDK的bug，请到
 
-     a.官方QQ群：173564082 
+     a.官方QQ群：173564082(已满),478753523
 
      b.官方论坛：http://www.weixinsdk.net/
 
