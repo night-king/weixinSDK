@@ -65,3 +65,21 @@ Code and documentation copyright 2011-2015. Code released under the MIT license.
 
 7.更多详细说明请访问：http://weixinsdk.net/forum.php?mod=viewthread&tid=6&extra=page%3D1
 
+8.新的项目进展：
+
+ （1）UowMVC： https://github.com/night-king/UowMVC
+     
+      一个简单的、轻量级、兼容移动端的基于Unit of work工作单元模式的ASP.net MVC快速开发框架。
+ 
+ （2）UowMVC-CMS : https://github.com/night-king/UowMVC-CMS  
+ 
+      基于UowMVC开发的小型CMS系统 
+      
+  (3) UowMVC-Weixin : https://github.com/night-king/UowMVC-Weixin
+  
+      基于UowMVC + WeixinSDK开发的微信公众号管理平台
+      
+  欢迎拍砖, Star, Fork。
+  
+  <font color=red>做一个用.net语言开发微信开源程序最专业的人</font>
+
