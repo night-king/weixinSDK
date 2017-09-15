@@ -40,13 +40,15 @@ Deepleo.Web是一个asp.net mvc的demo
 
     答：如果开发者遇到开发问题或者遇到SDK的bug，请到
 
-     a.官方QQ群：173564082(已满),478753523
+     a.官方QQ群：478753523
 
      b.官方论坛：http://www.weixinsdk.net/
 
      c.作者QQ：2586662969
      
-     d.作者微信号: deepleo (加好友注明weixinsdk)
+     d.官方微信公众号:
+     
+     <img src="https://github.com/night-king/weixinSDK/blob/master/%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C.jpg"  style="width:100px;height:100px;"/>
      
 
 4.源代码唯一托管地址：https://github.com/night-king/weixinSDK
