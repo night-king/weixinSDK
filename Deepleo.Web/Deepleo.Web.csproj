@@ -16,6 +16,12 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -112,7 +118,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JSSDKController.cs" />
-    <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\OAuthController.cs" />
     <Compile Include="Controllers\WXPayController.cs" />
     <Compile Include="Controllers\WeixinController.cs" />
@@ -133,6 +138,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\ad.jpg" />
     <Content Include="Images\jssdk-demo.png" />
+    <Content Include="Images\WePayLogo.png" />
     <Content Include="LogWriterConfig.xml" />
     <Content Include="Scripts\jssdk\demo.js" />
     <Content Include="Web.config" />
@@ -171,9 +177,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\JSSDK\Pay.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\OAuth\Failed.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +186,10 @@
     <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Media\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\WXPay\Failed.cshtml" />
+    <Content Include="Views\WXPay\Index.cshtml" />
+    <Content Include="Views\WXPay\Success.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

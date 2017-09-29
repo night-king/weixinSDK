@@ -1,0 +1,60 @@
+﻿@using Deepleo.Web.Models;
+
+@model JSPayModel
+
+<h2 class="weui-msg__title">收银台</h2>
+<p>警告：支付成功后，恕不退还。</p>
+
+<img src="~/Images/WePayLogo.png" style="width:50%; height:auto" />
+<div>商品:@Model.body</div>
+<div>
+    价格:@(Model.price.ToString("C")) 分
+</div>
+<div>
+    <p>
+        <a id="chooseWXPay" href="#" role="button">立即付款</a>
+    </p>
+</div>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+    document.querySelector('#chooseWXPay').onclick = function () {
+        callpay();
+    }
+    function callpay() {
+        if (typeof WeixinJSBridge == "undefined") {
+            if (document.addEventListener) {
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            }
+            else if (document.attachEvent) {
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        }
+        else {
+            jsApiCall();
+        }
+    }
+
+    function jsApiCall() {
+        if (parseInt(@Model.userVersion) < 5) {
+            alert("抱歉，您的微信版本不支持微信支付。"); isPayed = false;
+            return;
+        }
+        WeixinJSBridge.invoke('getBrandWCPayRequest', {
+            "appId": "@Model.appId",
+            "timeStamp": "@Model.timestamp",
+            "nonceStr": "@Model.nonceStr",
+            "package": "prepay_id=@Model.prepay_id",
+            "signType": "MD5",
+            "paySign": "@Model.sign",
+        }, function (res) {
+            if (res.err_msg == "get_brand_wcpay_request:ok") { // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+                window.location.href = decodeURIComponent('@Model.success_redict_url').replace("amp;", "");
+            }
+            else {
+                alert("支付失败" + res.err_msg);
+            }
+        });
+    }
+
+</script>

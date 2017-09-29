@@ -5,6 +5,9 @@ using System.Text;
 using System.Net.Http;
 using Codeplex.Data;
 using Deepleo.Weixin.SDK.Helpers;
+using System.Security.Cryptography.X509Certificates;
+using System.Net;
+using System.IO;
 
 namespace Deepleo.Weixin.SDK.Pay
 {
@@ -45,7 +48,7 @@ namespace Deepleo.Weixin.SDK.Pay
                                          string nonce_str, string body, string detail, string attach,
                                          string out_trade_no, string fee_type, int total_fee, string spbill_create_ip, string time_start, string time_expire, string goods_tag,
                                          string notify_url, string trade_type, string product_id, string openid,
-                                         string partnerKey
+                                         string partnerKey, out string returnMsg, out string xml
                                         )
         {
             var stringADict = new Dictionary<string, string>();
@@ -67,12 +70,18 @@ namespace Deepleo.Weixin.SDK.Pay
             stringADict.Add("product_id", product_id);
             stringADict.Add("openid", openid);
             var sign = Sign(stringADict, partnerKey);//生成签名字符串
-            var postdata =PayUtil.GeneralPostdata(stringADict, sign);
+            var postdata = PayUtil.GeneralPostdata(stringADict, sign);
+            xml = postdata;
             var url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
             var client = new HttpClient();
             var result = client.PostAsync(url, new StringContent(postdata)).Result;
-            if (!result.IsSuccessStatusCode) return string.Empty;
-            return new DynamicXml(result.Content.ReadAsStringAsync().Result);
+            if (!result.IsSuccessStatusCode)
+            {
+                returnMsg = "请求失败";
+                return string.Empty;
+            }
+            returnMsg = result.Content.ReadAsStringAsync().Result;
+            return new DynamicXml(returnMsg);
         }
 
         /// <summary>
@@ -397,6 +406,167 @@ namespace Deepleo.Weixin.SDK.Pay
             var stringSignTemp = sb.ToString();
             var sign = Util.MD5(stringSignTemp, "UTF-8").ToUpper();//对stringSignTemp进行MD5运算，再将得到的字符串所有字符转换为大写，得到sign值signValue。 
             return sign;
+        }
+
+        public static string SignPay(string appid, string timeStamp, string nonceStr, string prepayId, string partnerKey)
+        {
+            var signDict = new Dictionary<string, string>();
+            signDict.Add("appId", appid);
+            signDict.Add("timeStamp", timeStamp);
+            signDict.Add("nonceStr", nonceStr);
+            signDict.Add("package", "prepay_id=" + prepayId);
+            signDict.Add("signType", "MD5");
+            string buff = "";
+            foreach (var pair in signDict.OrderBy(x => x.Key))
+            {
+                if (pair.Value == null)
+                {
+                    continue;
+                }
+
+                if (pair.Key != "sign" && pair.Value.ToString() != "")
+                {
+                    buff += pair.Key + "=" + pair.Value + "&";
+                }
+            }
+            buff = buff.Trim('&');
+            buff += "&key=" + partnerKey;
+            return Util.MD5(buff, "UTF-8").ToUpper();
+        }
+        /// <summary>
+        /// 企业付款业务
+        /// 企业付款业务是基于微信支付商户平台的资金管理能力，为了协助商户方便地实现企业向个人付款，针对部分有开发能力的商户，提供通过API完成企业付款的功能。 
+        ///比如目前的保险行业向客户退保、给付、理赔。
+        ///https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_2
+        /// </summary>
+        /// <param name="appid"></param>
+        /// <param name="mch_id"></param>
+        /// <param name="nonce_str"></param>
+        /// <param name="sign"></param>
+        /// <param name="partner_trade_no"></param>
+        /// <param name="openid"></param>
+        /// <param name="check_name"></param>
+        /// <param name="amount"></param>
+        /// <param name="desc"></param>
+        /// <param name="spbill_create_ip"></param>
+        /// <returns></returns>
+        public static dynamic EnterprisePay(string appid, string mch_id, string nonce_str, string partner_trade_no,
+            string openid, string check_name, int amount, string desc, string spbill_create_ip, string partnerKey, string cert, string certPassword)
+        {
+            var stringADict = new Dictionary<string, string>();
+            stringADict.Add("mch_appid", appid);
+            stringADict.Add("mchid", mch_id);
+            stringADict.Add("nonce_str", nonce_str);
+            stringADict.Add("partner_trade_no", partner_trade_no);
+            stringADict.Add("openid", openid);
+            stringADict.Add("check_name", check_name);
+            stringADict.Add("amount", amount.ToString());
+            stringADict.Add("desc", desc);
+            stringADict.Add("spbill_create_ip", spbill_create_ip);
+            var sign = Sign(stringADict, partnerKey);//生成签名字符串
+            var postdata = PayUtil.GeneralPostdata(stringADict, sign);
+            var url = "https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers";
+            X509Certificate2 cer = new X509Certificate2(cert, certPassword);
+            Encoding encoding = Encoding.UTF8;
+            HttpWebRequest webrequest = (HttpWebRequest)HttpWebRequest.Create(url);
+            webrequest.ClientCertificates.Add(cer);
+            byte[] bs = encoding.GetBytes(postdata);
+            webrequest.Method = "POST";
+            webrequest.ContentType = "application/x-www-form-urlencoded";
+            webrequest.ContentLength = bs.Length;
+            using (Stream reqStream = webrequest.GetRequestStream())
+            {
+                reqStream.Write(bs, 0, bs.Length);
+                reqStream.Close();
+            }
+            using (HttpWebResponse response = (HttpWebResponse)webrequest.GetResponse())
+            {
+                using (StreamReader reader = new StreamReader(response.GetResponseStream(), encoding))
+                {
+                    var resXml = reader.ReadToEnd().ToString();
+                    return new DynamicXml(resXml);
+                }
+            }
+        }
+
+        /// <summary>
+        /// 发放普通红包
+        /// https://pay.weixin.qq.com/wiki/doc/api/tools/cash_coupon.php?chapter=13_4&index=3#
+        /// </summary>
+        /// <param name="appid"></param>
+        /// <param name="mch_id"></param>
+        /// <param name="nonce_str"></param>
+        /// <param name="partner_trade_no"></param>
+        /// <param name="openid"></param>
+        /// <param name="send_name"></param>
+        /// <param name="amount"></param>
+        /// <param name="total_num"></param>
+        /// <param name="wishing"></param>
+        /// <param name="client_ip"></param>
+        /// <param name="act_name"></param>
+        /// <param name="remark"></param>
+        /// <param name="partnerKey"></param>
+        /// <param name="cert"></param>
+        /// <param name="certPassword"></param>
+        /// <param name="scene_id"></param>
+        /// <param name="risk_info"></param>
+        /// <param name="consume_mch_id"></param>
+        /// <returns></returns>
+        public static dynamic Sendredpack(string appid, string mch_id, string nonce_str, string partner_trade_no,
+            string openid, string send_name, int amount, int total_num, string wishing, string client_ip, string act_name,
+            string remark, string partnerKey, string cert, string certPassword,
+            string scene_id = "", string risk_info = "", string consume_mch_id = "")
+        {
+            var stringADict = new Dictionary<string, string>();
+            stringADict.Add("nonce_str", nonce_str);
+            stringADict.Add("mch_billno", partner_trade_no);
+            stringADict.Add("mch_id", mch_id);
+            stringADict.Add("wxappid", appid);
+            stringADict.Add("send_name", send_name);
+            stringADict.Add("re_openid", openid);
+            stringADict.Add("total_amount", amount.ToString());
+            stringADict.Add("total_num", total_num.ToString());
+            stringADict.Add("wishing", wishing);
+            stringADict.Add("client_ip", client_ip);
+            stringADict.Add("act_name", act_name);
+            stringADict.Add("remark", remark);
+            if (!string.IsNullOrEmpty(scene_id))
+            {
+                stringADict.Add("scene_id", scene_id);
+            }
+            if (!string.IsNullOrEmpty(risk_info))
+            {
+                stringADict.Add("risk_info", risk_info);
+            }
+            if (!string.IsNullOrEmpty(consume_mch_id))
+            {
+                stringADict.Add("consume_mch_id", consume_mch_id);
+            }
+
+            var sign = Sign(stringADict, partnerKey);//生成签名字符串
+            var postdata = PayUtil.GeneralPostdata(stringADict, sign);
+            var url = "https://api.mch.weixin.qq.com/mmpaymkttransfers/sendredpack";
+            X509Certificate2 cer = new X509Certificate2(cert, certPassword);
+            Encoding encoding = Encoding.UTF8;
+            HttpWebRequest webrequest = (HttpWebRequest)HttpWebRequest.Create(url);
+            webrequest.ClientCertificates.Add(cer);
+            byte[] bs = encoding.GetBytes(postdata);
+            webrequest.Method = "POST";
+            webrequest.ContentType = "application/x-www-form-urlencoded";
+            webrequest.ContentLength = bs.Length;
+            using (Stream reqStream = webrequest.GetRequestStream())
+            {
+                reqStream.Write(bs, 0, bs.Length);
+                reqStream.Close();
+            }
+            using (HttpWebResponse response = (HttpWebResponse)webrequest.GetResponse())
+            {
+                using (StreamReader reader = new StreamReader(response.GetResponseStream(), encoding))
+                {
+                    var resXml = reader.ReadToEnd().ToString();
+                    return new DynamicXml(resXml);
+                }
+            }
         }
 
     }

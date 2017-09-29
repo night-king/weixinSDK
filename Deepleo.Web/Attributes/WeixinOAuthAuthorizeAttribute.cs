@@ -22,7 +22,7 @@ namespace Deepleo.Web.Attribute
             {
                 var userAgent = filterContext.RequestContext.HttpContext.Request.UserAgent;
                 var redirect_uri = string.Format("{0}/OAuth/Callback", domain);//这里需要完整url地址，对应Controller里面的OAuthController的Callback
-                var scope = WeixinConfig.OauthScope;
+                var scope = "snsapi_userinfo";
                 var state = Math.Abs(DateTime.Now.ToBinary()).ToString();//state保证唯一即可,可以用其他方式生成
                 //这里为了实现简单，将state和target_uri保存在Cache中，并设置过期时间为2分钟。您可以采用其他方法!!!
                 HttpContext.Current.Cache.Add(state, target_uri, null, DateTime.Now.AddMinutes(2), TimeSpan.Zero, CacheItemPriority.Normal, null);

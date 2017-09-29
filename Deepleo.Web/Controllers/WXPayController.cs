@@ -10,81 +10,131 @@ using Deepleo.Web.Services;
 using Deepleo.Weixin.SDK.Pay;
 using System.IO;
 using Codeplex.Data;
+using Deepleo.Web.Attribute;
+using Deepleo.Web.Models;
 
 namespace Deepleo.Web.Controllers
 {
+    [WeixinOAuthAuthorize]
     /// <summary>
     /// 微信支付
     /// </summary>
     public class WXPayController : Controller
     {
-        /// <summary>
-        /// 生成prepay_id
-        /// 
-        /// POST参数：
-        /// body(商品描述)
-        /// detail(商品详情)
-        /// total_fee(总金额,只能是整数，单位：分)
-        /// trade_type：APP，Native,JSAPI
-        /// goods_tag(商品标记):代金券或立减优惠功能的参数
-        /// product_id(商品ID):trade_type=NATIVE，此参数必传。此id为二维码中包含的商品ID，商户自行定义.
-        /// openid(用户标识):trade_type=JSAPI，此参数必传，用户在商户appid下的唯一标识。下单前需要调用【网页授权获取用户信息】接口获取到用户的Openid。 
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-        public JsonResult Index()
+        public ActionResult Index()
         {
-            var form = Request.Form;
-            var sPara = GetRequestPost(form);
-            if (sPara.Count <= 0)
+            try
             {
-                throw new ArgumentNullException();
-            }
-            LogWriter.Default.WriteInfo(form.ToString());//记录请求关键信息到日志中去
-            var out_trade_no = Guid.NewGuid().ToString();
-            var domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
-            var body = sPara["body"];
-            var detail = sPara["detail"];
-            var attach = sPara["attach"];
-            var fee_type = "CNY";
-            var total_fee = int.Parse(sPara["total_fee"]);
-            var trade_type = sPara["trade_type"];
-            var spbill_create_ip = (trade_type == "APP" || trade_type == "NATIVE") ? Request.UserHostName : WeixinConfig.spbill_create_ip;
-            var time_start = DateTime.Now.ToString("yyyyMMddHHmmss");
-            var time_expire = DateTime.Now.AddHours(1).ToString("yyyyMMddHHmmss");//默认1个小时订单过期，开发者可自定义其他超时机制，原则上微信订单超时时间不超过2小时
-            var goods_tag = sPara["goods_tag"];
-            var notify_url = string.Format("{0}/WXPay/Notify", domain);//与下面的Notify对应，开发者可自定义其他url地址
-            var product_id = sPara["product_id"];
-            var openid = sPara["openid"];
-            var partnerKey = WeixinConfig.PartnerKey;
-            var content = WxPayAPI.UnifiedOrder(
-                          WeixinConfig.AppID, WeixinConfig.mch_id, WeixinConfig.device_info, Util.CreateNonce_str(),
-                          body, detail, attach, out_trade_no, fee_type, total_fee, spbill_create_ip, time_start, time_expire,
-                          goods_tag, notify_url, trade_type, product_id, openid, partnerKey);
+                var out_trade_no = Guid.NewGuid().ToString("N");
+                var domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
+                var body = "商品描述";
+                var detail = "商品详情";
+                var attach = "";
+                var product_id = "1";
+                var openid = User.Identity.Name;
+                var goods_tag = "";
+                var fee_type = "CNY";
+                var total_fee = 100;
+                var trade_type = "JSAPI";
+                var appId = System.Configuration.ConfigurationManager.AppSettings["AppId"];
+                var nonceStr = Util.CreateNonce_str();
+                var timestamp = Util.CreateTimestamp();
+                var success_redict_url = string.Format("{0}/WxPay/Success", domain);
+                var url = domain + Request.Url.PathAndQuery;
+                var userAgent = Request.UserAgent;
+                var userVersion = userAgent.Substring(userAgent.LastIndexOf("MicroMessenger/") + 15, 3);//微信版本号高于或者等于5.0才支持微信支付
+                var spbill_create_ip = (trade_type == "APP" || trade_type == "NATIVE") ? Request.UserHostName : WeixinConfig.spbill_create_ip;
+                var time_start = DateTime.Now.ToString("yyyyMMddHHmmss");
+                var time_expire = DateTime.Now.AddHours(1).ToString("yyyyMMddHHmmss");//默认1个小时订单过期，开发者可自定义其他超时机制，原则上微信订单超时时间不超过2小时
 
-            if (content.return_code.Value == "SUCCESS" && content.result_code.Value == "SUCCESS")
-            {
-                var result = new
+                var notify_url = string.Format("{0}/WeixinPay/Notify", domain);//与下面的Notify对应，开发者可自定义其他url地址
+                var partnerKey = WeixinConfig.PartnerKey;
+                var mch_id = WeixinConfig.mch_id;
+                var device_info = WeixinConfig.device_info;
+                var returnMsg = "";
+                var returnXml = "";
+                var content = WxPayAPI.UnifiedOrder(
+                              appId, mch_id, device_info, nonceStr,
+                              body, detail, attach, out_trade_no, fee_type, total_fee, spbill_create_ip, time_start, time_expire,
+                              goods_tag, notify_url, trade_type, product_id, openid, partnerKey, out returnMsg, out returnXml);
+                var prepay_id = "";
+                var sign = "";
+                var return_code = "";
+                var return_msg = "";
+                var err_code = "";
+                var err_code_des = "";
+                var isUnifiedOrderSuccess = false;
+                if (content.return_code.Value == "SUCCESS")
                 {
-                    prepay_id = content.prepay_id.Value,
-                    trade_type = content.trade_type.Value,
-                    sign = content.sign.Value,
-                    nonce_str = content.nonce_str.Value,
-                    return_code = content.result_code.Value,
-                    return_msg = "",
-                };
-                return Json(result);
-            }
-            else
-            {
-                var result = new
-                {
-                    return_code = content.return_code.Value,
-                    return_msg = content.return_msg.Value,
-                };
-                return Json(result);
-            }
+                    sign = content.sign.Value;
+                    return_code = content.result_code.Value;
+                    return_msg = "";
+                    if (content.result_code.Value == "SUCCESS")
+                    {
+                        prepay_id = content.prepay_id.Value;
+                        sign = WxPayAPI.SignPay(appId, timestamp.ToString(), nonceStr, prepay_id, partnerKey);
+                        trade_type = content.trade_type.Value;
 
+                        LogWriter.Default.WriteError(string.Format("{0}'s prepay_id is ", out_trade_no, prepay_id));
+
+                        isUnifiedOrderSuccess = true;
+                    }
+                    else
+                    {
+                        err_code = content.err_code.Value;
+                        err_code_des = content.err_code_des.Value;
+                    }
+                }
+                else
+                {
+                    return_code = content.return_code.Value;
+                    return_msg = content.return_msg.Value;
+                }
+                if (!isUnifiedOrderSuccess)
+                {
+                    return RedirectToAction("Failed", new { msg = "(代码:101)服务器下单失败，请重试" });
+                }
+                var model = new JSPayModel
+                {
+                    appId = appId,
+                    nonceStr = nonceStr,
+                    timestamp = timestamp,
+                    userAgent = userAgent,
+                    userVersion = userVersion,
+                    attach = "",
+                    body = body,
+                    detail = detail,
+                    openid = openid,
+                    product_id = out_trade_no,
+                    goods_tag = goods_tag,
+                    price = total_fee,
+                    total_fee = total_fee,
+                    prepay_id = prepay_id,
+                    trade_type = trade_type,
+                    sign = sign,
+                    return_code = return_code,
+                    return_msg = return_msg,
+                    err_code = err_code,
+                    err_code_des = err_code_des,
+                    success_redict_url = success_redict_url
+                };
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                LogWriter.Default.WriteError(ex.Message);
+                return RedirectToAction("Failed", new { msg = "(代码:200)" + ex.Message });
+            }
+        }
+        public ActionResult Success()
+        {
+            return View();
+        }
+
+        public ActionResult Failed(string msg)
+        {
+            ViewBag.msg = msg;
+            return View();
         }
 
         /// <summary>
