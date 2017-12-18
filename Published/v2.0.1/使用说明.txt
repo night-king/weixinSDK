@@ -1,0 +1,3 @@
+1.如果出现缺少“System.Net.Http.dll”的编译错误，请将“System.Net.Http.dll”添加到项目“引用”中即可；
+2.必须把“Deepleo.Commander.exe”部署在IP白名单内的服务器上运行才能获取到access_token；
+3.如果调用方和“Deepleo.Commander.exe”不在同一台服务器上，请配置端口访问权限；

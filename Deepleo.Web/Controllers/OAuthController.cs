@@ -7,6 +7,7 @@ using Deepleo.Web.Attribute;
 using Deepleo.Weixin.SDK;
 using Deepleo.Web.Services;
 using System.Threading;
+using Deepleo.Web.CommandServiceReference;
 
 namespace Deepleo.Web.Controllers
 {
@@ -17,7 +18,13 @@ namespace Deepleo.Web.Controllers
         public ActionResult Index()
         {
             //记录access_token
-            LogWriter.Default.WriteError(WeixinConfig.TokenHelper.GetToken());
+            var appId = WeixinConfig.AppID;
+            var appSecret = WeixinConfig.AppSecret;
+            using (CommanderServiceClient client = new CommanderServiceClient())
+            {
+                var access_token = client.GetAccessToken(appId, appSecret, false);
+                LogWriter.Default.WriteError("access_token is: " + access_token);
+            }
             return View();
         }
 

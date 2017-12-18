@@ -93,7 +93,6 @@
     <Compile Include="MutliServiceAPI.cs" />
     <Compile Include="ReplayActiveMessageAPI.cs" />
     <Compile Include="ReplayPassiveMessageAPI.cs" />
-    <Compile Include="Helpers\TokenHelper.cs" />
     <Compile Include="Interface\IWeixinExecutor.cs" />
     <Compile Include="PromotionAPI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

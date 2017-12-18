@@ -106,7 +106,6 @@ namespace Deepleo.Web
                     {
                         case "subscribe"://用户未关注时，进行关注后的事件推送
                             #region 首次关注
-                            var token = WeixinConfig.TokenHelper.GetToken();
 
                             //TODO: 获取用户基本信息后，将用户信息存储在本地。
                             //var weixinInfo = UserAdminAPI.GetInfo(token, openId);//注意：订阅号没有此权限

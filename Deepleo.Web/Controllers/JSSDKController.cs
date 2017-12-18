@@ -8,6 +8,7 @@ using Deepleo.Web.Models;
 using Deepleo.Weixin.SDK.JSSDK;
 using System.Text.RegularExpressions;
 using Deepleo.Web.Attribute;
+using Deepleo.Web.CommandServiceReference;
 
 namespace Deepleo.Web.Controllers
 {
@@ -16,11 +17,17 @@ namespace Deepleo.Web.Controllers
         public ActionResult Index()
         {
             var appId = WeixinConfig.AppID;
+            var appSecret = WeixinConfig.AppSecret;
+
             var nonceStr = Util.CreateNonce_str();
             var timestamp = Util.CreateTimestamp();
             var domain = System.Configuration.ConfigurationManager.AppSettings["Domain"];
             var url = domain + Request.Url.PathAndQuery;
-            var jsTickect = WeixinConfig.TokenHelper.GetJSTickect();
+            var jsTickect = "";
+            using (CommanderServiceClient client = new CommanderServiceClient())
+            {
+                jsTickect = client.GetJsTicket(appId, appSecret, false);
+            }
             var string1 = "";
             var signature = JSAPI.GetSignature(jsTickect, nonceStr, timestamp, url, out string1);
             var model = new JSSDKModel

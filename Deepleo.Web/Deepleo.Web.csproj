@@ -48,6 +48,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -126,6 +128,11 @@
     </Compile>
     <Compile Include="Models\JSSDKModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\CommandServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Services\AuthorizationManager.cs" />
     <Compile Include="Services\LogWriter.cs" />
     <Compile Include="WeixinExecutor\WeixinExecutor.cs" />
@@ -141,6 +148,13 @@
     <Content Include="Images\WePayLogo.png" />
     <Content Include="LogWriterConfig.xml" />
     <Content Include="Scripts\jssdk\demo.js" />
+    <None Include="Service References\CommandServiceReference\item.disco" />
+    <None Include="Service References\CommandServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\CommandServiceReference\configuration.svcinfo" />
+    <None Include="Service References\CommandServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -148,6 +162,12 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <None Include="Service References\CommandServiceReference\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CommandServiceReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -190,6 +210,13 @@
     <Content Include="Views\WXPay\Failed.cshtml" />
     <Content Include="Views\WXPay\Index.cshtml" />
     <Content Include="Views\WXPay\Success.cshtml" />
+    <None Include="Service References\CommandServiceReference\CommanderService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CommandServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

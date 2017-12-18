@@ -80,7 +80,7 @@ namespace Deepleo.Weixin.SDK.Card
             var url = string.Format("https://api.weixin.qq.com/card/location/batchadd?access_token={0}", access_token);
             var client = new HttpClient();
             var result = client.PostAsync(url, new StringContent(DynamicJson.Serialize(location_list))).Result;
-            if (result.IsSuccessStatusCode) return null;
+            if (!result.IsSuccessStatusCode) return null;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
         /// <summary>
@@ -125,7 +125,7 @@ namespace Deepleo.Weixin.SDK.Card
                 .Append('"' + "count" + '"' + ":").Append(count)
                 .Append("}");
             var result = client.PostAsync(url, new StringContent(sb.ToString())).Result;
-            if (result.IsSuccessStatusCode) return null;
+            if (!result.IsSuccessStatusCode) return null;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
 
@@ -159,7 +159,7 @@ namespace Deepleo.Weixin.SDK.Card
             var url = string.Format("https://api.weixin.qq.com/card/getcolors?access_token={0}", access_token);
             var client = new HttpClient();
             var result = client.GetAsync(url).Result;
-            if (result.IsSuccessStatusCode) return null;
+            if (!result.IsSuccessStatusCode) return null;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
 
@@ -222,7 +222,7 @@ namespace Deepleo.Weixin.SDK.Card
             var url = string.Format("https://api.weixin.qq.com/card/create?access_token={0}", access_token);
             var client = new HttpClient();
             var result = client.PostAsync(url, new StringContent(DynamicJson.Serialize(card))).Result;
-            if (result.IsSuccessStatusCode) return null;
+            if (!result.IsSuccessStatusCode) return null;
             return DynamicJson.Parse(result.Content.ReadAsStringAsync().Result);
         }
 
