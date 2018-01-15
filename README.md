@@ -51,11 +51,7 @@ Wiki: https://github.com/night-king/weixinSDK/wiki
      b.官方网站：http://www.weixinsdk.net/
 
      c.作者QQ：2586662969
-     
-     d.官方微信公众号:
-     
-     <img src="https://github.com/night-king/weixinSDK/blob/master/%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C.jpg"  style="width:100px;height:100px;"/>
-     
+
 
 4.源代码唯一托管地址：https://github.com/night-king/weixinSDK
 
