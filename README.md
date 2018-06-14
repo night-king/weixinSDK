@@ -4,7 +4,9 @@
 
 微信公众平台：http://mp.weixin.qq.com/wiki/home/index.html
 
-Deepleo.Weixin.SDK是SDK源代码
+Deepleo.Weixin.SDK是.net framework 4.5 的SDK源代码
+
+Deepleo.Weixin.SDK.Core是dotnet core 2.0 的SDK源代码
 
 Deepleo.Web是一个asp.net mvc的demo  Online: http://demo.weixinsdk.net
 
