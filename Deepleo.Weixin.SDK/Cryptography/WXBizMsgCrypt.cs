@@ -64,6 +64,7 @@ namespace Tencent
                 return (int)WXBizMsgCryptErrorCode.WXBizMsgCrypt_IllegalAesKey;
             }
             XmlDocument doc = new XmlDocument();
+            doc.XmlResolver = null;
             XmlNode root;
             string sEncryptMsg;
             try
