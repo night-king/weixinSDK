@@ -19,6 +19,8 @@ Deepleo.Web是一个asp.net mvc的demo  Online: http://demo.weixinsdk.net
 运用Dynamic(.net 4.0以及以上版本支持)在程序中传递微信所需的结构化（xml,json）对象，减少大量代码，实现轻量级。
 让您可以像Python一样书写代码。
 
+使用本SDK仍然需要仔细阅读官方文档，明确Dynamic对象字段名称。
+
 3.疑难问题
 
 Wiki: https://github.com/night-king/weixinSDK/wiki
@@ -42,6 +44,7 @@ Wiki: https://github.com/night-king/weixinSDK/wiki
     msg.Body = new DynamicXml(message);
    
     string msgType = msg.Body.MsgType.Value;
+   
 
 
 2）遇到其他问题该如何解决?
@@ -60,7 +63,7 @@ Wiki: https://github.com/night-king/weixinSDK/wiki
 
 5.Copyright and license
 
-Code and documentation copyright 2011-2015. Code released under the MIT license. Docs released under Creative Commons.
+Code and documentation copyright 2011-2019. Code released under the MIT license. Docs released under Creative Commons.
 
 
 
