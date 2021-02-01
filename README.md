@@ -1,4 +1,3 @@
-<img src="http://weixinsdk.net/slider.png"  style="width:100px;height:100px;"/>
 
 1.使用对象
 
