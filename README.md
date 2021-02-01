@@ -8,12 +8,6 @@ Deepleo.Weixin.SDK是.net framework 4.5 的SDK源代码
 
 Deepleo.Weixin.SDK.Core是dotnet core 2.0 的SDK源代码
 
-Deepleo.Web是一个asp.net mvc的demo  Online: http://demo.weixinsdk.net
-
-扫码查看：
-
-     <img src="https://github.com/night-king/weixinSDK/blob/master/%E4%BD%A0%E6%83%B3%E8%A6%81%E7%9A%84%E9%83%BD%E5%9C%A8%E8%BF%99%E9%87%8C.jpg"  style="width:100px;height:100px;"/>
-
 2.核心思想
 
 运用Dynamic(.net 4.0以及以上版本支持)在程序中传递微信所需的结构化（xml,json）对象，减少大量代码，实现轻量级。
